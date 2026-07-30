@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -99,7 +100,6 @@ const sections = [
     contact: {
       email: "privacy@cainoa.com",
       dpo: "dpo@cainoa.com",
-      phone: "+234 800 CAINOA",
       address: "Cainoa Technologies Ltd., Plot 1072, Cadastral Zone B07, Abuja, Nigeria",
     },
   },
@@ -125,20 +125,21 @@ const itemVariants = {
 export default function Privacy() {
   return (
     <main>
+      <SEO title="Privacy Policy" description="Cainoa's privacy policy — how we collect, use, and protect your personal data in compliance with NDPR and other applicable regulations." path="/legal/privacy" />
       <PageHero
         badge="Legal / Privacy Policy"
         title="Privacy Policy"
         subtitle="Last updated: January 2025. At Cainoa, we take your privacy seriously. This policy describes how we collect, use, and protect your personal data."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-24"
+            className="space-y-16"
           >
             {sections.map((section) => (
               <motion.div
@@ -147,10 +148,10 @@ export default function Privacy() {
                 variants={itemVariants}
                 className="scroll-mt-24"
               >
-                <div className="rounded-3xl bg-white border border-border p-10 lg:p-14 hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500">
+                <div className="rounded-3xl bg-white border border-border p-10 lg:p-14 hover:shadow-xl hover:shadow-md transition-all duration-500">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <section.icon size={28} className="text-accent" />
+                    <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0">
+                      <section.icon size={28} className="text-primary" />
                     </div>
                     <SectionHeading
                       title={section.title}
@@ -171,7 +172,7 @@ export default function Privacy() {
                           transition={{ duration: 0.4, delay: j * 0.05 }}
                           className="flex items-start gap-3 text-muted-text leading-relaxed"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
                           <span>{bullet}</span>
                         </motion.li>
                       ))}
@@ -215,11 +216,7 @@ export default function Privacy() {
                             dpo@cainoa.com
                           </a>
                         </div>
-                        <div>
-                          <p className="text-sm font-semibold text-primary mb-1">Phone</p>
-                          <p className="text-muted-text text-sm">+234 800 CAINOA</p>
-                        </div>
-                        <div>
+                      <div>
                           <p className="text-sm font-semibold text-primary mb-1">Address</p>
                           <p className="text-muted-text text-sm leading-relaxed">
                             Cainoa Technologies Ltd., Plot 1072, Cadastral Zone B07, Abuja, Nigeria

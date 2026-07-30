@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
+import SEO from "../components/SEO"
 import PageHero from "../components/shared/PageHero"
 import SectionHeading from "../components/shared/SectionHeading"
 import CTASection from "../components/shared/CTASection"
@@ -107,6 +108,7 @@ export default function Careers() {
 
   return (
     <main>
+      <SEO title="Careers" description="Join Cainoa's team of engineers, researchers, and cybersecurity professionals shaping Africa's digital future." path="/careers" />
       <PageHero
         badge="Careers"
         title="Join the Engineers Building Tomorrow"
@@ -114,10 +116,10 @@ export default function Careers() {
         subtitle="At Cainoa, you'll work on Africa's most ambitious infrastructure projects alongside the brightest minds in engineering."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title="Why Work at Cainoa" subtitle="More than a job — a chance to shape the future of African technology." align="center" />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyWorkData.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -126,9 +128,9 @@ export default function Careers() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
               >
-                <item.icon size={28} className="text-accent mb-5" />
+                <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -137,10 +139,10 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title="Benefits" subtitle="We take care of our team so they can focus on doing their best work." />
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefitsData.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -148,9 +150,9 @@ export default function Careers() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white border border-border group hover:border-accent/20 transition-all duration-500"
+                className="p-8 rounded-3xl bg-white border border-border group hover:border-border transition-all duration-500"
               >
-                <item.icon size={36} className="text-accent mb-4" />
+                <item.icon size={36} className="text-primary mb-4" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -159,10 +161,10 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title="Open Positions" subtitle="Join the team building Africa's enterprise infrastructure." />
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {positionsData.map((pos, i) => (
               <motion.div
                 key={pos.title}
@@ -171,15 +173,15 @@ export default function Careers() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <Briefcase size={24} className="text-accent" />
+                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
+                    <Briefcase size={24} className="text-primary" />
                   </div>
                   <div>
                     <h3 className="font-heading text-lg font-bold text-primary">{pos.title}</h3>
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-secondary-bg text-primary text-xs font-semibold">
                       {pos.type}
                     </span>
                   </div>
@@ -196,7 +198,7 @@ export default function Careers() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-12 text-center"
+            className="mt-10 text-center"
           >
             <Button size="lg" className="rounded-full gap-2 group">
               View All Openings <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -205,12 +207,12 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title="Hiring Process" subtitle="A transparent, structured, and respectful process designed to find the best fit." align="center" />
-          <div className="mt-16 relative">
+          <div className="mt-10 relative">
             <div className="absolute left-[23px] top-0 bottom-0 w-px bg-border hidden md:block" />
-            <div className="space-y-12">
+            <div className="space-y-8">
               {hiringSteps.map((step, i) => (
                 <motion.div
                   key={step.step}
@@ -220,10 +222,10 @@ export default function Careers() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="relative md:pl-20"
                 >
-                  <div className="hidden md:flex absolute left-0 top-1 w-12 h-12 rounded-full bg-accent items-center justify-center">
+                  <div className="hidden md:flex absolute left-0 top-1 w-12 h-12 rounded-full bg-primary items-center justify-center">
                     <span className="text-white text-sm font-bold">{step.step}</span>
                   </div>
-                  <div className="md:hidden inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-2">{step.step}</div>
+                  <div className="md:hidden inline-block px-3 py-1 rounded-full bg-secondary-bg text-primary text-sm font-semibold mb-2">{step.step}</div>
                   <h3 className="font-heading text-xl font-bold text-primary">{step.title}</h3>
                   <p className="mt-2 text-muted-text leading-relaxed">{step.desc}</p>
                 </motion.div>
@@ -233,9 +235,9 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -246,7 +248,7 @@ export default function Careers() {
                 title="Internship & Graduate Programs"
                 subtitle="Launch your career with hands-on experience on real infrastructure projects."
               />
-              <div className="mt-8 space-y-4 text-muted-text leading-relaxed">
+              <div className="mt-6 space-y-4 text-muted-text leading-relaxed">
                 <p>
                   Our internship and graduate programs are designed to identify and nurture the next generation of African engineering talent. You won't be fetching coffee — you'll be shipping code, contributing to production systems, and learning from senior engineers who are committed to your growth.
                 </p>
@@ -260,7 +262,7 @@ export default function Careers() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Button size="lg" className="rounded-full gap-2 group mt-8">
+                <Button size="lg" className="rounded-full gap-2 group mt-6">
                   Explore Programs <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </Button>
               </motion.div>
@@ -272,17 +274,17 @@ export default function Careers() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <GraduationCap size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <GraduationCap size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -290,8 +292,8 @@ export default function Careers() {
               transition={{ duration: 0.6 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <Users size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Users size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
             <motion.div
@@ -305,7 +307,7 @@ export default function Careers() {
                 title="Diversity & Inclusion"
                 subtitle="We build better technology when we build it together."
               />
-              <div className="mt-8 space-y-4 text-muted-text leading-relaxed">
+              <div className="mt-6 space-y-4 text-muted-text leading-relaxed">
                 <p>
                   At Cainoa, diversity isn't a metric — it's a strategic advantage. We believe that the best engineering solutions emerge from teams with diverse perspectives, backgrounds, and lived experiences.
                 </p>
@@ -321,14 +323,14 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Frequently Asked Questions"
             subtitle="Everything you need to know about starting your career at Cainoa."
             align="center"
           />
-          <div className="mt-12 max-w-3xl mx-auto space-y-4">
+          <div className="mt-10 max-w-3xl mx-auto space-y-4">
             {faqData.map((faq, i) => (
               <motion.div
                 key={i}
@@ -345,7 +347,7 @@ export default function Careers() {
                   <span className="font-heading font-bold text-primary pr-4">{faq.q}</span>
                   <ChevronDown
                     size={20}
-                    className={`text-accent shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                    className={`text-primary shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 <motion.div
@@ -365,10 +367,9 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-28 bg-primary">
+      <section className="relative py-16 lg:py-24 bg-primary">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent/5 to-transparent" />
-          <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div

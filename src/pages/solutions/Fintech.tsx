@@ -4,6 +4,7 @@ import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
 import { Button } from "../../components/ui/button"
 import { Wallet, Banknote, CreditCard, ShieldCheck, ArrowRight, Building2, Users, Globe } from "lucide-react"
+import SEO from "../../components/SEO"
 import { useNavigate } from "react-router-dom"
 
 const solutions = [
@@ -70,19 +71,20 @@ export default function Fintech() {
 
   return (
     <main>
+      <SEO title="Financial Infrastructure" description="Unified fintech API platform for payments, identity verification, mobile money, and open banking across African markets." path="/solutions/fintech" />
       <PageHero
-        badge="Solutions / Fintech"
+        badge="Solutions / Financial Infrastructure"
         title="Modern Financial Infrastructure"
         subtitle="Secure, scalable payment systems and digital banking platforms built for African financial institutions and cooperatives."
       />
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
-            title="Complete Fintech Stack"
+            title="Complete Financial Infrastructure Stack"
             subtitle="End-to-end financial infrastructure powering payments, banking, and compliance for African institutions."
           />
-          <div className="mt-16 space-y-6">
+          <div className="mt-10 space-y-6">
             {solutions.map((sol, i) => (
               <motion.div
                 key={sol.title}
@@ -91,26 +93,26 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 whileHover={{ y: -4 }}
-                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <div className="grid lg:grid-cols-5 gap-8 items-start">
                   <div className="lg:col-span-2">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
-                        <sol.icon size={24} className="text-accent" />
+                      <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0">
+                        <sol.icon size={24} className="text-primary" />
                       </div>
                       <div>
                         <h3 className="font-heading text-2xl font-bold text-primary">{sol.title}</h3>
                       </div>
                     </div>
-                    <p className="text-sm text-accent font-semibold mb-3">{sol.tagline}</p>
+                    <p className="text-sm text-muted-text font-semibold mb-3">{sol.tagline}</p>
                     <p className="text-muted-text leading-relaxed text-sm">{sol.description}</p>
                   </div>
                   <div className="lg:col-span-3">
                     <div className="grid sm:grid-cols-2 gap-3">
                       {sol.features.map((f) => (
                         <div key={f} className="flex items-start gap-3 p-3 rounded-2xl bg-primary/5">
-                          <ArrowRight size={16} className="text-accent mt-0.5 shrink-0" />
+                          <ArrowRight size={16} className="text-primary mt-0.5 shrink-0" />
                           <span className="text-sm text-primary font-medium">{f}</span>
                         </div>
                       ))}
@@ -123,24 +125,24 @@ export default function Fintech() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
               title="Enterprise-Grade Security"
-              subtitle="Every layer of our fintech stack is built with military-grade encryption, zero-trust architecture, and full regulatory compliance."
+              subtitle="Every layer of our financial infrastructure stack is built with encryption, zero-trust architecture, and full regulatory compliance."
               align="center"
             />
-            <div className="mt-12 grid sm:grid-cols-3 gap-6">
+            <div className="mt-10 grid sm:grid-cols-3 gap-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <ShieldCheck size={32} className="text-accent mb-4 mx-auto" />
+                <ShieldCheck size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">PCI DSS Level 1</h3>
                 <p className="text-sm text-muted-text">Highest level of payment card industry compliance.</p>
               </motion.div>
@@ -150,9 +152,9 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <Globe size={32} className="text-accent mb-4 mx-auto" />
+                <Globe size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">ISO 27001</h3>
                 <p className="text-sm text-muted-text">International standard for information security management.</p>
               </motion.div>
@@ -162,9 +164,9 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <Users size={32} className="text-accent mb-4 mx-auto" />
+                <Users size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">NDPR Compliant</h3>
                 <p className="text-sm text-muted-text">Full compliance with Nigeria data protection regulations.</p>
               </motion.div>
@@ -173,7 +175,7 @@ export default function Fintech() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading

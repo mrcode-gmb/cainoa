@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -86,7 +87,7 @@ const articles = [
   },
 ]
 
-const allArticles = [...articles, ...articles.slice(0, 3).map((a) => ({ ...a, title: a.title + " (Part 2)", date: "April 2026" }))]
+const allArticles = articles
 
 function AuthorAvatar({ name, className }: { name: string; className?: string }) {
   const initials = name
@@ -95,7 +96,7 @@ function AuthorAvatar({ name, className }: { name: string; className?: string })
     .join("")
   return (
     <div
-      className={`w-9 h-9 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center text-accent font-bold text-xs ${className ?? ""}`}
+      className={`w-9 h-9 rounded-full bg-gradient-to-br from-secondary-bg to-secondary-bg flex items-center justify-center text-primary font-bold text-xs ${className ?? ""}`}
     >
       {initials}
     </div>
@@ -105,16 +106,16 @@ function AuthorAvatar({ name, className }: { name: string; className?: string })
 function PlaceholderImage({ icon: Icon, className }: { icon: React.ElementType; className?: string }) {
   return (
     <div
-      className={`aspect-[16/10] bg-gradient-to-br from-accent/20 via-primary/10 to-accent/10 flex items-center justify-center ${className ?? ""}`}
+      className={`aspect-[16/10] bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg flex items-center justify-center ${className ?? ""}`}
     >
-      <Icon size={44} className="text-accent/30 group-hover:scale-110 transition-transform duration-500" />
+      <Icon size={44} className="text-muted-text/20 group-hover:scale-110 transition-transform duration-500" />
     </div>
   )
 }
 
 function CategoryBadge({ label }: { label: string }) {
   return (
-    <span className="px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-xs whitespace-nowrap">
+    <span className="px-3 py-1 rounded-full bg-secondary-bg text-primary font-semibold text-xs whitespace-nowrap">
       {label}
     </span>
   )
@@ -131,17 +132,18 @@ export default function Blog() {
 
   return (
     <main>
+      <SEO title="Blog" description="Insights and updates from Cainoa's team on AI infrastructure, cybersecurity, fintech, and Africa's technology landscape." path="/resources/blog" />
       <PageHero
         badge="Resources / Blog"
         title="Insights From Our Engineers"
         subtitle="Deep dives into AI infrastructure, fintech engineering, cybersecurity architecture, and enterprise technology from the team building Africa's digital future."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading title="Latest Articles" subtitle="Technical insights and industry perspectives from Cainoa's engineering and leadership teams." />
 
-          <div className="mt-12 overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0">
+          <div className="mt-10 overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0">
             <div className="flex gap-3 min-w-max">
               {categories.map((cat) => (
                 <button
@@ -168,11 +170,11 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mt-12 group rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+              className="mt-10 group rounded-3xl bg-white border border-border overflow-hidden hover:shadow-md transition-all duration-500"
             >
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-accent/30 via-primary/20 to-accent/20 flex items-center justify-center">
-                  <BookOpen size={80} className="text-accent/30 group-hover:scale-110 transition-transform duration-500" />
+                <div className="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg flex items-center justify-center">
+                  <BookOpen size={80} className="text-muted-text/20 group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <CategoryBadge label={featuredArticle.category} />
@@ -182,15 +184,15 @@ export default function Blog() {
                   <p className="mt-4 text-muted-text leading-relaxed">{featuredArticle.excerpt}</p>
                   <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-text">
                     <span className="flex items-center gap-2">
-                      <User size={14} className="text-accent" />
+                      <User size={14} className="text-muted-text" />
                       {featuredArticle.author}
                     </span>
                     <span className="flex items-center gap-2">
-                      <Calendar size={14} className="text-accent" />
+                      <Calendar size={14} className="text-muted-text" />
                       {featuredArticle.date}
                     </span>
                     <span className="flex items-center gap-2">
-                      <Clock size={14} className="text-accent" />
+                      <Clock size={14} className="text-muted-text" />
                       {featuredArticle.readTime}
                     </span>
                   </div>
@@ -207,7 +209,7 @@ export default function Blog() {
             </motion.article>
           )}
 
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayed.map((article, i) => (
               <motion.article
                 key={article.title}
@@ -216,7 +218,7 @@ export default function Blog() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-white border border-border overflow-hidden hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col"
+                className="group rounded-3xl bg-white border border-border overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
               >
                 <PlaceholderImage icon={BookOpen} />
                 <div className="p-6 flex flex-col flex-1">
@@ -251,7 +253,7 @@ export default function Blog() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mt-12 text-center"
+              className="mt-10 text-center"
             >
               <Button
                 size="lg"
@@ -267,7 +269,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -282,7 +284,7 @@ export default function Blog() {
               />
               <form
                 onSubmit={(e) => e.preventDefault()}
-                className="mt-8 flex flex-col sm:flex-row gap-4"
+                className="mt-6 flex flex-col sm:flex-row gap-4"
               >
                 <input
                   type="email"
@@ -313,8 +315,8 @@ export default function Blog() {
               transition={{ duration: 0.6 }}
               className="relative hidden lg:block"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <BookOpen size={100} className="text-accent/30" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <BookOpen size={100} className="text-muted-text/20" />
               </div>
             </motion.div>
           </div>

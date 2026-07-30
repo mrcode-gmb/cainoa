@@ -16,6 +16,7 @@ import Documentation from "./pages/resources/Documentation"
 import Research from "./pages/resources/Research"
 import Blog from "./pages/resources/Blog"
 import CaseStudies from "./pages/resources/CaseStudies"
+import Contact from "./pages/Contact"
 import Privacy from "./pages/legal/Privacy"
 import Terms from "./pages/legal/Terms"
 import Security from "./pages/legal/Security"
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/leadership" element={<Leadership />} />
         <Route path="/press" element={<Press />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/solutions/ai-platform" element={<AIPlatform />} />
         <Route path="/solutions/fintech" element={<Fintech />} />
         <Route path="/solutions/cybersecurity" element={<Cybersecurity />} />

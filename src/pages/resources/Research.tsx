@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -49,7 +50,7 @@ const enterpriseTech = [
   {
     icon: Microscope,
     title: "Digital Identity Infrastructure for Underserved Populations",
-    desc: "Building self-sovereign identity systems that leverage biometrics, blockchain, and decentralized identifiers to provide verifiable digital identities for the 500 million Africans without formal identification.",
+    desc: "Building self-sovereign identity systems that leverage biometrics, blockchain, and decentralized identifiers to provide verifiable digital identities for users without formal identification.",
     findings: "Successful pilot across three states enrolled millions of users with high biometric match accuracy.",
   },
 ]
@@ -164,7 +165,7 @@ const partnerships = [
     icon: GraduationCap,
     university: "Bayero University, Kano",
     program: "Fintech & Digital Economy Research Center",
-    desc: "Collaborative research center exploring financial inclusion technology, mobile money analytics, and blockchain-based solutions for Northern Nigeria's digital economy.",
+    desc: "Collaborative research center exploring financial inclusion technology, mobile money analytics, and blockchain-based solutions for Africa's digital economy.",
   },
 ]
 
@@ -175,20 +176,21 @@ export default function Research() {
 
   return (
     <main>
+      <SEO title="Research" description="Cainoa's research publications, technical papers, and reports on AI, cybersecurity, and financial technology for emerging markets." path="/resources/research" />
       <PageHero
         badge="Resources / Research"
         title="Research & Innovation"
-        subtitle="Pushing the boundaries of AI, fintech, and enterprise technology through cutting-edge research and academic partnerships."
+        subtitle="Pushing the boundaries of AI, fintech, and enterprise technology through applied research and academic partnerships."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Artificial Intelligence"
             title="AI Research"
             subtitle="Advancing the frontiers of machine learning, natural language processing, and computer vision with a focus on African contexts."
           />
-          <div className="mt-16 space-y-8">
+          <div className="mt-12 space-y-8">
             {aiResearch.map((paper, i) => (
               <motion.div
                 key={paper.title}
@@ -197,18 +199,18 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -2 }}
-                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
                 <div className="flex items-start gap-5">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <paper.icon size={24} className="text-accent" />
+                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
+                    <paper.icon size={24} className="text-primary" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                       <h3 className="font-heading text-xl font-bold text-primary">{paper.title}</h3>
                       <span className="shrink-0 text-xs text-muted-text">{paper.venue}</span>
                     </div>
-                    <p className="mt-1 text-sm text-accent font-medium">{paper.authors}</p>
+                    <p className="mt-1 text-sm text-muted-text font-medium">{paper.authors}</p>
                     <p className="mt-4 text-muted-text leading-relaxed">{paper.abstract}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
                       {paper.tags.map((tag) => (
@@ -225,14 +227,14 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Infrastructure & Security"
             title="Enterprise Technology"
             subtitle="Researching resilient, secure, and scalable enterprise systems engineered for Africa's unique infrastructure landscape."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {enterpriseTech.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -241,13 +243,13 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
-                <item.icon size={28} className="text-accent mb-5" />
+                <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed mb-5">{item.desc}</p>
-                <div className="p-4 rounded-2xl bg-accent/5 border border-accent/10">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-1">Key Finding</p>
+                <div className="p-4 rounded-2xl bg-secondary-bg border border-border">
+                  <p className="text-xs font-semibold text-muted-text uppercase tracking-wider mb-1">Key Finding</p>
                   <p className="text-sm text-primary">{item.findings}</p>
                 </div>
               </motion.div>
@@ -256,14 +258,14 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Financial Technology"
             title="Fintech Insights"
             subtitle="Driving financial inclusion through research on payment infrastructure, fraud detection, and AI-powered lending systems."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {fintechInsights.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -272,13 +274,13 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
-                <item.icon size={28} className="text-accent mb-5" />
+                <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed mb-5">{item.desc}</p>
-                <div className="p-4 rounded-2xl bg-accent/5 border border-accent/10">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-1">Impact</p>
+                <div className="p-4 rounded-2xl bg-secondary-bg border border-border">
+                  <p className="text-xs font-semibold text-muted-text uppercase tracking-wider mb-1">Impact</p>
                   <p className="text-sm text-primary">{item.impact}</p>
                 </div>
               </motion.div>
@@ -287,14 +289,14 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Resources"
             title="White Papers"
             subtitle="In-depth technical reports and industry analyses produced by our research teams."
           />
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whitePapers.map((wp, i) => (
               <motion.div
                 key={wp.title}
@@ -303,10 +305,10 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="group p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col"
+                className="group p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 flex flex-col"
               >
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-5">
-                  <wp.icon size={24} className="text-accent" />
+                <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center mb-5">
+                  <wp.icon size={24} className="text-primary" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-primary mb-3">{wp.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed mb-6 flex-1">{wp.excerpt}</p>
@@ -324,14 +326,14 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Peer-Reviewed"
             title="Publications"
             subtitle="Our research appears in top-tier international journals and conference proceedings."
           />
-          <div className="mt-16 space-y-6">
+          <div className="mt-12 space-y-6">
             {publications.map((pub, i) => (
               <motion.div
                 key={pub.paper}
@@ -340,14 +342,14 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -2 }}
-                className="p-6 lg:p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-6 lg:p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
                 <div className="flex items-start gap-5">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <pub.icon size={24} className="text-accent" />
+                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
+                    <pub.icon size={24} className="text-primary" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs text-accent font-semibold uppercase tracking-wider">{pub.title}</p>
+                    <p className="text-xs text-muted-text font-semibold uppercase tracking-wider">{pub.title}</p>
                     <h3 className="font-heading text-lg font-bold text-primary mt-1">{pub.paper}</h3>
                     <p className="mt-1 text-sm text-muted-text">{pub.authors}</p>
                     <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-muted-text">
@@ -363,14 +365,14 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Lab Facilities"
             title="Innovation Labs"
-            subtitle="Our research labs are hubs of discovery, housing world-class talent and purpose-built infrastructure for breakthrough innovation."
+            subtitle="Our research labs are hubs of discovery, housing experienced talent and purpose-built infrastructure for breakthrough innovation."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {innovationLabs.map((lab, i) => (
               <motion.div
                 key={lab.title}
@@ -379,11 +381,11 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
-                <lab.icon size={28} className="text-accent mb-5" />
+                <lab.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-1">{lab.title}</h3>
-                <p className="text-xs text-accent font-medium mb-4">{lab.location}</p>
+                <p className="text-xs text-muted-text font-medium mb-4">{lab.location}</p>
                 <p className="text-sm text-muted-text leading-relaxed mb-5">{lab.focus}</p>
                 <div className="pt-4 border-t border-border">
                   <p className="text-xs text-muted-text">Lab Lead</p>
@@ -395,7 +397,7 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Collaborations"
@@ -403,7 +405,7 @@ export default function Research() {
             subtitle="Forging long-term collaborations with leading universities to train the next generation of AI researchers and enterprise engineers."
             align="center"
           />
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
             {partnerships.map((p, i) => (
               <motion.div
                 key={p.university}
@@ -412,13 +414,13 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 text-center"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 text-center"
               >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                  <p.icon size={28} className="text-accent" />
+                <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mx-auto mb-5">
+                  <p.icon size={28} className="text-primary" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-primary mb-1">{p.university}</h3>
-                <p className="text-sm text-accent font-medium mb-4">{p.program}</p>
+                <p className="text-sm text-muted-text font-medium mb-4">{p.program}</p>
                 <p className="text-sm text-muted-text leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
@@ -426,10 +428,9 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="relative py-28 lg:py-36 bg-primary">
+      <section className="relative py-20 lg:py-24 bg-primary">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent/5 to-transparent" />
-          <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
@@ -444,7 +445,7 @@ export default function Research() {
               <span className="text-accent-mint">Research Team</span>
             </h2>
             <p className="mt-6 text-lg text-white/60 leading-relaxed">
-              Collaborate with Cainoa's world-class researchers on joint projects, sponsored research, and technology transfer initiatives.
+              Collaborate with Cainoa's researchers on joint projects, sponsored research, and technology transfer initiatives.
             </p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}

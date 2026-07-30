@@ -7,10 +7,9 @@ export default function CTASection() {
   const navigate = useNavigate()
 
   return (
-    <section className="relative py-28 lg:py-36 bg-primary">
+    <section className="relative py-20 lg:py-28 bg-primary">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent/5 to-transparent" />
-        <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
@@ -25,15 +24,15 @@ export default function CTASection() {
             Let&apos;s Build the{" "}
             <span className="text-accent-mint">Future Together</span>
           </h2>
-          <p className="mt-6 text-lg text-white/60 leading-relaxed">
+          <p className="mt-4 text-lg text-white/60 leading-relaxed">
             Partner with Cainoa to deliver secure, scalable, and intelligent
             digital infrastructure.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
               className="rounded-full gap-2 group bg-accent hover:bg-accent/90"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/contact")}
             >
               Partner With Us
               <ArrowUpRight
@@ -45,7 +44,7 @@ export default function CTASection() {
               variant="outline"
               size="lg"
               className="rounded-full gap-2 group border-white/20 text-white hover:bg-white/10"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/contact")}
             >
               Contact Our Team
             </Button>

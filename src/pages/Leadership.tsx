@@ -1,104 +1,48 @@
 import { motion } from "framer-motion"
+import SEO from "../components/SEO"
 import PageHero from "../components/shared/PageHero"
 import SectionHeading from "../components/shared/SectionHeading"
 import CTASection from "../components/shared/CTASection"
 import { Button } from "../components/ui/button"
-import { ExternalLink, ArrowRight, Users, Cpu, Building2, Star } from "lucide-react"
+import { ArrowRight, Users, Cpu, Network, Shield, Code, Brain, Lock, Star, Building2 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
-const executiveTeam = [
+const teamCapabilities = [
   {
-    initials: "AS",
-    name: "Abdullahi Suleiman",
-    title: "CEO & Co-Founder",
-    bio: "Abdullahi founded Cainoa with a mission to build Africa's sovereign AI infrastructure. With over 15 years in enterprise technology, he has led digital transformation programs for governments and financial institutions across Northern Nigeria.",
-    gradient: "from-blue-600 to-indigo-600",
+    icon: Cpu,
+    title: "AI & Machine Learning",
+    count: "8 Engineers",
+    desc: "LLM deployment, fine-tuning, RAG pipelines, computer vision, and predictive analytics. Our AI team brings research backgrounds and production deployment experience across healthcare, finance, and government.",
   },
   {
-    initials: "AY",
-    name: "Amina Yusuf",
-    title: "Chief Technology Officer",
-    bio: "Amina architects Cainoa's entire technology stack, from cloud infrastructure to AI deployment pipelines. She brings deep expertise in distributed systems, machine learning operations, and zero-trust security frameworks.",
-    gradient: "from-emerald-500 to-teal-600",
+    icon: Shield,
+    title: "Cybersecurity",
+    count: "6 Engineers",
+    desc: "Zero-trust architecture, penetration testing, cloud security posture management, and incident response. Certified professionals with experience securing critical national infrastructure.",
   },
   {
-    initials: "IM",
-    name: "Ibrahim Musa",
-    title: "Chief Operating Officer",
-    bio: "Ibrahim ensures Cainoa delivers on every commitment with operational excellence. He oversees project delivery, client relationships, and the company's growing footprint across multiple African markets.",
-    gradient: "from-purple-600 to-pink-600",
+    icon: Network,
+    title: "Cloud & Infrastructure",
+    count: "7 Engineers",
+    desc: "AWS, Azure, and GCP certified architects. Kubernetes, Terraform, CI/CD, and high-availability systems designed for enterprise reliability and scale.",
   },
   {
-    initials: "FU",
-    name: "Fatima Usman",
-    title: "Chief Information Security Officer",
-    bio: "Fatima leads Cainoa's cybersecurity practice, building military-grade defense systems for enterprise clients. She previously headed security operations for a leading fintech platform serving millions across West Africa.",
-    gradient: "from-orange-500 to-red-600",
-  },
-]
-
-const engineeringLeaders = [
-  {
-    initials: "ZI",
-    name: "Zaynab Ibrahim",
-    title: "VP of Engineering",
-    bio: "Zaynab leads a world-class engineering organization spanning full-stack development, DevOps, and platform engineering. She champions engineering rigor and technical mentorship across the team.",
-    gradient: "from-cyan-500 to-blue-600",
+    icon: Code,
+    title: "Software Engineering",
+    count: "12 Engineers",
+    desc: "Full-stack development across TypeScript, Python, Go, and Rust. Microservices architecture, API design, and platform engineering for fintech and enterprise applications.",
   },
   {
-    initials: "MG",
-    name: "Mohammed Garba",
-    title: "Head of AI",
-    bio: "Mohammed drives Cainoa's AI strategy, including LLM deployment, computer vision systems, and predictive analytics. His research background bridges cutting-edge AI research with real-world enterprise applications.",
-    gradient: "from-violet-600 to-indigo-700",
+    icon: Brain,
+    title: "Product & Design",
+    count: "4 Engineers",
+    desc: "Human-centered design, enterprise UX, and product management. Translating complex technical capabilities into intuitive, accessible interfaces for institutional users.",
   },
   {
-    initials: "AB",
-    name: "Aisha Bello",
-    title: "Head of Infrastructure",
-    bio: "Aisha architects the cloud and on-premise infrastructure powering Cainoa's enterprise deployments. She specializes in high-availability systems, edge computing, and scalable network architecture.",
-    gradient: "from-green-600 to-emerald-700",
-  },
-]
-
-const productLeaders = [
-  {
-    initials: "HI",
-    name: "Hassan Idris",
-    title: "Chief Product Officer",
-    bio: "Hassan translates complex technical capabilities into intuitive enterprise products. He oversees the product lifecycle from discovery through delivery, ensuring every solution solves real market needs.",
-    gradient: "from-rose-600 to-pink-700",
-  },
-  {
-    initials: "KS",
-    name: "Khadija Sani",
-    title: "Head of Product Design",
-    bio: "Khadija leads product design with a human-centered approach, crafting interfaces that make powerful AI systems accessible. Her team sets the standard for enterprise UX across all Cainoa platforms.",
-    gradient: "from-amber-500 to-orange-600",
-  },
-]
-
-const advisoryBoard = [
-  {
-    initials: "JO",
-    name: "Dr. James Okafor",
-    title: "AI Research Advisor",
-    bio: "Dr. Okafor is a leading AI researcher with publications in natural language processing and machine learning. He advises Cainoa on research direction and emerging AI capabilities for the African context.",
-    gradient: "from-sky-600 to-blue-700",
-  },
-  {
-    initials: "SN",
-    name: "Sarah Ngozi",
-    title: "Fintech Strategy Advisor",
-    bio: "Sarah brings decades of experience in African financial services and digital banking. She guides Cainoa's fintech strategy and regulatory approach across multiple jurisdictions.",
-    gradient: "from-teal-600 to-cyan-700",
-  },
-  {
-    initials: "PE",
-    name: "Paul Eze",
-    title: "Cybersecurity Advisor",
-    bio: "Paul is a cybersecurity veteran who has built security programs for global enterprises. He advises Cainoa's security framework and helps maintain the highest standards of data protection.",
-    gradient: "from-slate-700 to-gray-800",
+    icon: Lock,
+    title: "Compliance & Governance",
+    count: "3 Engineers",
+    desc: "ISO 27001, NDPR, GDPR, and PCI DSS compliance specialists. Data protection, risk management, and regulatory alignment for African and international standards.",
   },
 ]
 
@@ -106,7 +50,7 @@ const principles = [
   {
     icon: Users,
     title: "Lead with Impact",
-    desc: "Every decision we make is measured by its impact on Africa's technological sovereignty and the communities we serve.",
+    desc: "Every decision is measured by its impact on Africa's technological sovereignty and the communities we serve.",
   },
   {
     icon: Star,
@@ -125,113 +69,141 @@ const principles = [
   },
 ]
 
-function LeaderCard({ person, index }: { person: typeof executiveTeam[0]; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -6 }}
-      className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
-    >
-      <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${person.gradient} flex items-center justify-center mb-6`}>
-        <span className="text-white text-xl font-bold">{person.initials}</span>
-      </div>
-      <h3 className="font-heading text-xl font-bold text-primary">{person.name}</h3>
-      <p className="text-accent font-semibold text-sm mt-1">{person.title}</p>
-      <p className="mt-4 text-muted-text text-sm leading-relaxed">{person.bio}</p>
-      <button className="mt-6 inline-flex items-center gap-2 text-sm text-muted-text hover:text-accent transition-colors">
-        <ExternalLink size={16} /> LinkedIn
-      </button>
-    </motion.div>
-  )
-}
+// TODO: When real leadership is ready to be named publicly, replace this page
+// with individual profiles including real names, titles, bios, and LinkedIn links.
 
 export default function Leadership() {
   const navigate = useNavigate()
 
   return (
     <main>
+      <SEO title="Leadership" description="Cainoa's team combines deep expertise in AI, cybersecurity, fintech, and cloud infrastructure to deliver enterprise-grade platforms." path="/leadership" />
       <PageHero
-        badge="Leadership"
-        title="Meet the Leaders Behind Cainoa"
-        subtitle="The visionaries and engineers driving Africa's AI infrastructure revolution."
+        badge="Our Team"
+        title="The Engineers Building Africa's Digital Infrastructure"
+        subtitle="Cainoa is a collective of 40+ engineers, architects, and security specialists — one of the deepest technical teams in the region."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title="Executive Team" subtitle="The leadership steering Cainoa's mission and vision across Africa." />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {executiveTeam.map((person, i) => (
-              <LeaderCard key={person.name} person={person} index={i} />
-            ))}
+          <div className="max-w-3xl mb-12">
+            <SectionHeading
+              title="Team by Discipline"
+              subtitle="Our team spans the full technology stack — from embedded systems and hardware to cloud-native architectures, LLM deployment, and zero-trust security."
+            />
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teamCapabilities.map((cap, i) => {
+              const Icon = cap.icon
+              return (
+                <motion.div
+                  key={cap.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mb-5">
+                    <Icon size={28} className="text-primary" />
+                  </div>
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <h3 className="font-heading text-xl font-bold text-primary">{cap.title}</h3>
+                    <span className="shrink-0 px-3 py-1 rounded-full bg-secondary-bg text-primary text-xs font-semibold whitespace-nowrap">
+                      {cap.count}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-text leading-relaxed">{cap.desc}</p>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title="Engineering Leadership" subtitle="The technical minds building Africa's most advanced AI infrastructure." />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {engineeringLeaders.map((person, i) => (
-              <LeaderCard key={person.name} person={person} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title="Product Leadership" subtitle="The team shaping Cainoa's product vision and user experience." />
-          <div className="mt-16 grid sm:grid-cols-2 max-w-2xl gap-6">
-            {productLeaders.map((person, i) => (
-              <LeaderCard key={person.name} person={person} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title="Advisory Board" subtitle="Trusted experts guiding Cainoa's strategy, research, and security." />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {advisoryBoard.map((person, i) => (
-              <LeaderCard key={person.name} person={person} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading title="Our Leadership Principles" subtitle="The values that define how we lead, build, and grow." align="center" />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {principles.map((p, i) => (
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <SectionHeading
+                title="How We Hire"
+                subtitle="Every engineer is rigorously selected through a process designed to identify not just technical skill, but architectural thinking, security mindset, and problem-solving creativity."
+              />
+              <div className="mt-6 space-y-4 text-muted-text leading-relaxed">
+                <p>
+                  Our engineers come from backgrounds spanning computer science, electrical engineering, mathematics, and physics — with experience across startups, enterprise, government, and research.
+                </p>
+                <p>
+                  We invest heavily in continuous learning: every team member has a personalized development plan, a dedicated learning budget, and access to certifications across AWS, Azure, GCP, Kubernetes, and offensive security.
+                </p>
+                <p>
+                  We are actively hiring across all disciplines. If you share our vision for Africa's digital future, we want to hear from you.
+                </p>
+              </div>
               <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <p.icon size={28} className="text-accent mb-5" />
-                <h3 className="font-heading text-lg font-bold text-primary mb-2">{p.title}</h3>
-                <p className="text-sm text-muted-text leading-relaxed">{p.desc}</p>
+                <Button size="lg" className="rounded-full gap-2 group mt-6" onClick={() => navigate("/careers")}>
+                  Join Our Team <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </Button>
               </motion.div>
-            ))}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Users size={120} className="text-muted-text/20" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading title="Our Leadership Principles" subtitle="The values that define how we lead, build, and grow." align="center" />
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {principles.map((p, i) => {
+              const Icon = p.icon
+              return (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
+                >
+                  <Icon size={28} className="text-primary mb-5" />
+                  <h3 className="font-heading text-lg font-bold text-primary mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted-text leading-relaxed">{p.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
-              title="Join the Team"
-              subtitle="We are always looking for exceptional leaders and engineers who share our vision for Africa's digital future."
+              title="Individual Leadership Profiles"
+              subtitle="We believe in leading by example, not by titles. As our team grows, we will introduce our leadership here."
               align="center"
             />
             <motion.div
@@ -240,7 +212,7 @@ export default function Leadership() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Button size="lg" className="rounded-full gap-2 group mt-8" onClick={() => navigate("/careers")}>
+              <Button size="lg" className="rounded-full gap-2 group mt-6" onClick={() => navigate("/careers")}>
                 View Open Positions <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>

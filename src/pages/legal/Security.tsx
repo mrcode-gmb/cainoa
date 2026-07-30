@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -172,14 +173,15 @@ export default function Security() {
 
   return (
     <>
+      <SEO title="Security" description="Cainoa's security practices — encryption, access controls, compliance certifications, and our responsible disclosure policy." path="/legal/security" />
       <PageHero
         badge="Legal / Security"
         title="Enterprise Security Standards"
-        subtitle="Cainoa maintains military-grade security protocols across all infrastructure, platforms, and operations. Here's how we protect your data."
+        subtitle="Cainoa maintains enterprise security protocols across all infrastructure, platforms, and operations. Here's how we protect your data."
       />
 
       {/* Encryption Standards */}
-      <section className="py-24 lg:py-32 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Data Protection"
@@ -187,7 +189,7 @@ export default function Security() {
             subtitle="All data is encrypted at rest, in transit, and end-to-end using industry-leading cryptographic standards."
           />
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {encryptionStandards.map((item, i) => {
               const Icon = item.icon
               return (
@@ -198,10 +200,10 @@ export default function Security() {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="group p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                  className="group p-8 rounded-3xl border border-border bg-white hover:shadow-xl hover:shadow-md transition-all duration-500"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-500">
-                    <Icon size={28} className="text-accent" />
+                  <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mb-6 transition-colors duration-500">
+                    <Icon size={28} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-primary mb-3">
                     {item.title}
@@ -210,7 +212,7 @@ export default function Security() {
                     {item.description}
                   </p>
                   <div className="mt-6 pt-6 border-t border-border">
-                    <span className="text-2xl font-bold text-accent">
+                    <span className="text-2xl font-bold text-primary">
                       {item.metric}
                     </span>
                     <span className="block text-sm text-muted-text mt-0.5">
@@ -225,7 +227,7 @@ export default function Security() {
       </section>
 
       {/* Infrastructure Security */}
-      <section className="py-24 lg:py-32">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Infrastructure"
@@ -233,7 +235,7 @@ export default function Security() {
             subtitle="Our multi-cloud infrastructure is architected with security as a foundational principle, not an afterthought."
           />
 
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
             {infrastructure.map((item, i) => {
               const Icon = item.icon
               return (
@@ -246,8 +248,8 @@ export default function Security() {
                   className="p-8 lg:p-10 rounded-3xl border border-border bg-white"
                 >
                   <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <Icon size={28} className="text-accent" />
+                    <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0">
+                      <Icon size={28} className="text-primary" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-primary mb-3">
@@ -259,7 +261,7 @@ export default function Security() {
                       <ul className="space-y-2.5">
                         {item.features.map((f) => (
                           <li key={f} className="flex items-start gap-3 text-sm text-muted-text">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                             {f}
                           </li>
                         ))}
@@ -274,7 +276,7 @@ export default function Security() {
       </section>
 
       {/* Authentication & Access Control */}
-      <section className="py-24 lg:py-32 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Access Control"
@@ -282,7 +284,7 @@ export default function Security() {
             subtitle="Defence-in-depth identity security — every access request is authenticated, authorised, and continuously validated."
           />
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {accessControls.map((item, i) => {
               const Icon = item.icon
               return (
@@ -293,10 +295,10 @@ export default function Security() {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                  className="p-8 rounded-3xl border border-border bg-white hover:shadow-xl hover:shadow-md transition-all duration-500"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                    <Icon size={28} className="text-accent" />
+                  <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mb-6">
+                    <Icon size={28} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-primary mb-3">
                     {item.title}
@@ -312,7 +314,7 @@ export default function Security() {
       </section>
 
       {/* Compliance & Certifications */}
-      <section className="py-24 lg:py-32">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Compliance"
@@ -320,7 +322,7 @@ export default function Security() {
             subtitle="We adhere to global regulatory frameworks and maintain independent certifications to validate our security posture."
           />
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {complianceItems.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -334,7 +336,7 @@ export default function Security() {
                   <h3 className="text-xl font-bold text-primary">
                     {item.title}
                   </h3>
-                  <span className="shrink-0 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wider uppercase">
+                  <span className="shrink-0 px-3 py-1 rounded-full bg-secondary-bg text-primary text-xs font-semibold tracking-wider uppercase">
                     {item.status}
                   </span>
                 </div>
@@ -348,7 +350,7 @@ export default function Security() {
       </section>
 
       {/* Monitoring & Threat Detection */}
-      <section className="py-24 lg:py-32 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Detection"
@@ -356,7 +358,7 @@ export default function Security() {
             subtitle="Our 24/7 Security Operations Centre monitors billions of events daily to detect and neutralise threats in real time."
           />
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {monitoringItems.map((item, i) => {
               const Icon = item.icon
               return (
@@ -367,10 +369,10 @@ export default function Security() {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                  className="p-8 rounded-3xl border border-border bg-white hover:shadow-xl hover:shadow-md transition-all duration-500"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                    <Icon size={28} className="text-accent" />
+                  <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mb-6">
+                    <Icon size={28} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-primary mb-3">
                     {item.title}
@@ -386,7 +388,7 @@ export default function Security() {
       </section>
 
       {/* Incident Response */}
-      <section className="py-24 lg:py-32">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Response"
@@ -394,10 +396,10 @@ export default function Security() {
             subtitle="Our structured incident response framework ensures rapid detection, containment, and recovery with full transparency."
           />
 
-          <div className="mt-16 relative">
+          <div className="mt-10 relative">
             <div className="hidden lg:block absolute left-1/2 top-6 bottom-6 w-px bg-border -translate-x-1/2" />
 
-            <div className="space-y-12 lg:space-y-16">
+            <div className="space-y-8">
               {incidentResponse.map((item, i) => (
                 <motion.div
                   key={item.phase}
@@ -407,7 +409,7 @@ export default function Security() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className={`relative flex flex-col ${
                     i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  } items-start gap-8 lg:gap-16`}
+                  } items-start gap-6 lg:gap-12`}
                 >
                   <div className="flex-1">
                     <div
@@ -415,7 +417,7 @@ export default function Security() {
                         i % 2 === 0 ? "lg:text-right" : ""
                       }`}
                     >
-                      <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wider uppercase mb-3">
+                      <span className="inline-block px-3 py-1 rounded-full bg-secondary-bg text-primary text-xs font-semibold tracking-wider uppercase mb-3">
                         Phase {i + 1}
                       </span>
                       <h3 className="text-2xl font-bold text-primary mb-3">
@@ -427,7 +429,7 @@ export default function Security() {
                     </div>
                   </div>
 
-                  <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white text-lg font-bold shrink-0 border-4 border-secondary-bg">
+                  <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white text-lg font-bold shrink-0 border-4 border-secondary-bg">
                     {i + 1}
                   </div>
 
@@ -440,7 +442,7 @@ export default function Security() {
       </section>
 
       {/* Responsible Disclosure */}
-      <section className="py-24 lg:py-32 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-5 items-center">
             <motion.div
@@ -462,8 +464,8 @@ export default function Security() {
                     key={benefit}
                     className="flex items-center gap-3 text-muted-text"
                   >
-                    <div className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                      <div className="w-2 h-2 rounded-full bg-accent" />
+                    <div className="w-5 h-5 rounded-full bg-secondary-bg flex items-center justify-center shrink-0">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
                     </div>
                     {benefit}
                   </div>
@@ -489,8 +491,8 @@ export default function Security() {
             >
               <div className="p-8 rounded-3xl bg-white border border-border">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <AlertTriangle size={24} className="text-accent" />
+                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
+                    <AlertTriangle size={24} className="text-primary" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-primary">
@@ -503,23 +505,23 @@ export default function Security() {
                 </div>
                 <ul className="space-y-3 text-sm text-muted-text">
                   <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     Do not access or modify data that does not belong to you
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     Do not perform attacks that could impact availability
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     Provide sufficient details to reproduce the issue
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     Allow reasonable time for remediation before disclosure
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                     Report via our encrypted security contact channel
                   </li>
                 </ul>

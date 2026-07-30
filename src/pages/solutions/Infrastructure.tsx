@@ -7,6 +7,7 @@ import {
   Cloud, Server, Database, GitBranch, Activity, Monitor,
   RotateCcw, Settings2, ArrowRight, RefreshCw
 } from "lucide-react"
+import SEO from "../../components/SEO"
 import { useNavigate } from "react-router-dom"
 
 const services = [
@@ -169,6 +170,7 @@ export default function Infrastructure() {
 
   return (
     <main>
+      <SEO title="Infrastructure" description="Cloud infrastructure and DevOps platform for deploying, monitoring, and scaling applications across African regions." path="/solutions/infrastructure" />
       <PageHero
         badge="Solutions / Infrastructure"
         title="Scalable Infrastructure for Mission-Critical Systems"
@@ -176,7 +178,7 @@ export default function Infrastructure() {
         subtitle="Cloud-native architecture, DevOps automation, and high-availability platforms engineered for enterprise reliability."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -187,7 +189,7 @@ export default function Infrastructure() {
           >
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <span className="inline-block px-3 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-xs font-semibold tracking-wider uppercase mb-4">
+                <span className="inline-block px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase mb-4">
                   Our Approach
                 </span>
                 <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
@@ -212,13 +214,13 @@ export default function Infrastructure() {
       {services.map((service, index) => (
         <section
           key={service.title}
-          className={`py-20 lg:py-28 ${
+          className={`py-16 lg:py-24 ${
             index % 2 === 0 ? "bg-secondary-bg/50" : "bg-white"
           }`}
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div
-              className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
+              className={`grid lg:grid-cols-2 gap-12 lg:gap-12 items-center ${
                 index % 2 !== 0 ? "lg:direction-rtl" : ""
               }`}
             >
@@ -228,7 +230,7 @@ export default function Infrastructure() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <service.icon size={40} className="text-accent mb-4" />
+                <service.icon size={40} className="text-primary mb-4" />
                 <SectionHeading
                   title={service.title}
                   subtitle={service.subtitle}
@@ -249,7 +251,7 @@ export default function Infrastructure() {
                       variants={fadeUp}
                       className="flex items-start gap-3 text-sm text-muted-text"
                     >
-                      <span className="mt-0.5 w-2 h-2 rounded-full bg-accent shrink-0" />
+                      <span className="mt-0.5 w-2 h-2 rounded-full bg-primary shrink-0" />
                       {item}
                     </motion.li>
                   ))}
@@ -265,10 +267,10 @@ export default function Infrastructure() {
                   index % 2 !== 0 ? "lg:order-first" : ""
                 }`}
               >
-                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
+                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
                   <service.icon
                     size={100}
-                    className="text-accent/30"
+                    className="text-muted-text/20"
                   />
                 </div>
               </motion.div>
@@ -277,7 +279,7 @@ export default function Infrastructure() {
         </section>
       ))}
 
-      <section className="py-20 lg:py-28 bg-primary">
+      <section className="py-16 lg:py-24 bg-primary">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -291,7 +293,7 @@ export default function Infrastructure() {
               align="center"
             />
           </motion.div>
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Certified Expertise",
@@ -339,7 +341,7 @@ export default function Infrastructure() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -352,7 +354,7 @@ export default function Infrastructure() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Button
                 size="lg"

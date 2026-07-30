@@ -19,16 +19,16 @@ const capabilities = [
     description:
       "Scalable cloud-native infrastructure, microservice orchestration, and distributed systems designed for high-availability enterprise operations.",
     icon: Network,
-    color: "from-accent/20 to-accent/5",
-    border: "border-accent/30",
-    accent: "text-accent",
+    color: "from-secondary-bg to-secondary-bg",
+    border: "border-border",
+    accent: "text-primary",
     highlighted: true,
   },
   {
     title: "Cybersecurity & Trust",
     subtitle: "Protecting Critical Digital Assets",
     description:
-      "Military-grade security architecture, zero-trust implementation, and continuous threat monitoring for sovereign digital infrastructure.",
+      "Zero-trust security architecture, implementation, and continuous monitoring for critical digital infrastructure.",
     icon: Shield,
     color: "from-purple-500/20 to-purple-600/5",
     border: "border-purple-500/20",
@@ -38,40 +38,40 @@ const capabilities = [
 
 export default function BlueprintSection() {
   return (
-    <section className="relative py-28 lg:py-36 bg-secondary-bg/50">
+    <section className="relative py-20 lg:py-28 bg-secondary-bg/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-accent font-medium text-sm tracking-widest uppercase">
+            <span className="text-primary font-medium text-sm tracking-widest uppercase">
               Our Approach
             </span>
 
-            <h2 className="mt-4 font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-primary">
+            <h2 className="mt-3 font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-primary">
               The Cainoa
               <br />
               <span className="text-accent-mint">Blueprint</span>
             </h2>
 
-            <p className="mt-6 text-lg text-muted-text leading-relaxed">
-              We combine elite engineering with advanced AI to build secure,
+            <p className="mt-4 text-lg text-muted-text leading-relaxed">
+              We combine deep engineering expertise with advanced AI to build secure,
               scalable enterprise infrastructure.
             </p>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-6 space-y-4">
               <p className="text-base text-muted-text leading-relaxed">
                 Innovation is only as good as the hands that build it.
               </p>
 
               <p className="text-base text-muted-text leading-relaxed">
-                Cainoa houses an elite collective of the best engineers in
-                Northern Nigeria, with deep expertise spanning AI integration,
+                Cainoa houses a collective of engineers
+                across Africa, with deep expertise spanning AI integration,
                 Large Language Models (LLMs), enterprise architecture, cloud
-                infrastructure, and military-grade cybersecurity.
+                infrastructure, and cybersecurity.
               </p>
 
               <p className="text-base text-muted-text leading-relaxed">
@@ -93,7 +93,7 @@ export default function BlueprintSection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-full gap-2 group mt-8"
+                className="rounded-full gap-2 group mt-6"
               >
                 Meet Our Engineers
                 <ArrowRight
@@ -115,7 +115,7 @@ export default function BlueprintSection() {
                 whileHover={{ scale: 1.02 }}
                 className={`group relative overflow-hidden rounded-3xl border-2 p-8 cursor-default transition-all duration-500 ${
                   cap.highlighted
-                    ? "border-accent/30 bg-gradient-to-br from-accent/[0.07] to-transparent shadow-lg shadow-accent/5"
+                    ? "border-border bg-gradient-to-br from-secondary-bg to-transparent shadow-lg shadow-black/5"
                     : "border-border bg-white hover:border-primary/20 hover:shadow-xl"
                 }`}
               >

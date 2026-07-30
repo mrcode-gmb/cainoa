@@ -6,7 +6,9 @@ import { Button } from "../../components/ui/button"
 import {
   Shield, Lock, Eye, Network, AlertTriangle,
   Server, ArrowRight, Fingerprint, Radio, Cloud,
+  GraduationCap, ShieldCheck, Scan,
 } from "lucide-react"
+import SEO from "../../components/SEO"
 import { useNavigate } from "react-router-dom"
 
 const services = [
@@ -73,7 +75,7 @@ const services = [
   {
     icon: Network,
     title: "Data Encryption",
-    subtitle: "Military-Grade Cryptographic Standards",
+    subtitle: "Enterprise Cryptographic Standards",
     description:
       "End-to-end encryption solutions that protect data at rest, in transit, and in use. We implement cryptographic frameworks aligned with international standards and regulatory requirements.",
     features: [
@@ -130,13 +132,58 @@ const services = [
       "Continuous risk monitoring and re-assessment",
     ],
   },
+  {
+    icon: Scan,
+    title: "Vulnerability Assessment & Penetration Testing (VAPT)",
+    subtitle: "Comprehensive Security Testing",
+    description:
+      "Full-spectrum vulnerability assessment and penetration testing that covers your entire attack surface. Our certified testers combine automated scanning with manual exploitation to uncover weaknesses across networks, applications, and cloud environments.",
+    features: [
+      "Internal and external network vulnerability assessments",
+      "Web and mobile application penetration testing",
+      "Cloud infrastructure security reviews (AWS, Azure, GCP)",
+      "API and microservices security testing",
+      "Social engineering and physical security assessments",
+      "Remediation verification and regression testing",
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Blue Team / Managed Detection & Response",
+    subtitle: "Defensive Security Operations",
+    description:
+      "24/7 managed detection and response powered by certified security analysts and AI-driven correlation. Our Blue Team defends your environment against advanced threats through continuous monitoring, threat hunting, and rapid incident response.",
+    features: [
+      "Security operations centre (SOC) as a service",
+      "Managed detection and response (MDR)",
+      "Endpoint detection and response (EDR) deployment",
+      "SIEM architecture, tuning, and management",
+      "Threat hunting and adversary tracking",
+      "Incident response planning and tabletop exercises",
+    ],
+  },
+  {
+    icon: GraduationCap,
+    title: "Cybersecurity Training & Awareness",
+    subtitle: "Build Your Security Culture",
+    description:
+      "Practical, role-based cybersecurity training programmes that transform your workforce from your biggest risk into your strongest defence. We deliver engaging content tailored to technical and non-technical audiences alike.",
+    features: [
+      "Security awareness and phishing simulation programmes",
+      "Technical training: ethical hacking, incident response, cloud security",
+      "Executive briefings and board-level risk communication",
+      "Custom curriculum development aligned to your threat profile",
+      "Capture-the-flag (CTF) exercises and hands-on labs",
+      "Measurable behaviour change and reporting metrics",
+    ],
+  },
 ]
 
 const partners = [
-  { name: "Cisco", role: "Security Architecture Partner" },
-  { name: "Palo Alto Networks", role: "Next-Gen Firewall Partner" },
-  { name: "AWS", role: "Advanced Tier Security Partner" },
-  { name: "Fortinet", role: "Network Security Elite Partner" },
+  { name: "AWS", role: "Cloud Infrastructure Partner" },
+  { name: "Cisco", role: "Technology Partner" },
+  { name: "Palo Alto Networks", role: "Technology Partner" },
+  { name: "Fortinet", role: "Technology Partner" },
 ]
 
 export default function Cybersecurity() {
@@ -144,18 +191,19 @@ export default function Cybersecurity() {
 
   return (
     <main>
+      <SEO title="Cybersecurity" description="Enterprise cybersecurity services including VAPT, Blue Team operations, zero trust architecture, and compliance for African organisations." path="/solutions/cybersecurity" />
       <PageHero
         badge="Solutions / Cybersecurity"
         title="Security Built Into Every Layer"
         highlight="Every Layer"
-        subtitle="Military-grade cybersecurity architecture protecting Africa's most critical digital infrastructure."
+        subtitle="Enterprise cybersecurity architecture protecting Africa's most critical digital infrastructure."
       />
 
 
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +213,7 @@ export default function Cybersecurity() {
               <SectionHeading
                 badge="Security Monitoring"
                 title="Continuous Security Surveillance"
-                subtitle="Proactive threat monitoring and incident response by elite security analysts."
+                subtitle="24/7 threat monitoring and incident response by certified security analysts."
               />
               <div className="mt-8 space-y-4 text-muted-text leading-relaxed">
                 <p>
@@ -188,7 +236,7 @@ export default function Cybersecurity() {
                   "Dedicated security analyst coverage",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <div className="mt-1 w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+                    <div className="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0" />
                     <span className="text-sm text-muted-text">{item}</span>
                   </div>
                 ))}
@@ -201,22 +249,22 @@ export default function Cybersecurity() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <Server size={100} className="text-accent/40" />
+              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Server size={100} className="text-muted-text/20" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Enterprise Cybersecurity Services"
             subtitle="Comprehensive security solutions engineered for Africa's most critical infrastructure."
             align="center"
           />
-          <div className="mt-16 space-y-24">
+          <div className="mt-8 space-y-16">
             {services.map((service, idx) => (
               <motion.div
                 key={service.title}
@@ -227,8 +275,8 @@ export default function Cybersecurity() {
               >
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div className={idx % 2 === 1 ? "lg:order-2" : ""}>
-                  <service.icon size={36} className="text-accent mb-5" />
-                  <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wider uppercase mb-3">
+                  <service.icon size={36} className="text-primary mb-5" />
+                  <span className="inline-block px-3 py-1 rounded-full bg-secondary-bg text-primary text-xs font-semibold tracking-wider uppercase mb-3">
                     {service.subtitle}
                   </span>
                   <h3 className="font-heading text-2xl sm:text-3xl font-bold text-primary leading-tight mb-4">
@@ -240,15 +288,15 @@ export default function Cybersecurity() {
                   <ul className="space-y-3">
                     {service.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
-                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                         <span className="text-sm text-muted-text">{f}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-accent/5 via-primary/5 to-accent/5 border border-border flex items-center justify-center p-12">
-                    <service.icon size={80} className="text-accent/30" />
+                  <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                    <service.icon size={80} className="text-muted-text/20" />
                   </div>
                 </div>
               </div>
@@ -258,14 +306,14 @@ export default function Cybersecurity() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Trusted by Industry Leaders"
-            subtitle="Our security partnerships and certifications ensure world-class service delivery."
+            subtitle="Our security partnerships and certifications ensure enterprise-grade service delivery."
             align="center"
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {partners.map((p, i) => (
               <motion.div
                 key={p.name}
@@ -273,7 +321,7 @@ export default function Cybersecurity() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white border border-border text-center group hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl bg-white border border-border text-center group hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <h3 className="font-heading text-xl font-bold text-primary mb-1">
                   {p.name}
@@ -285,7 +333,7 @@ export default function Cybersecurity() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -21,18 +22,21 @@ const quickstartData = [
     title: "Installation",
     desc: "Install the Cainoa CLI and SDK using npm, pip, or our Docker image. Get started in under 5 minutes with a single command.",
     code: "npm install @cainoa/cli -g",
+    tag: "Coming Soon",
   },
   {
     icon: BookOpen,
     title: "Configuration",
     desc: "Configure your API keys, environment variables, and service endpoints. Our setup wizard handles the heavy lifting.",
     code: "cainoa init --project=my-app",
+    tag: "Coming Soon",
   },
   {
     icon: Code,
     title: "First Request",
     desc: "Make your first API call to verify connectivity and test authentication against our sandbox environment.",
     code: "cainoa api ping --env=sandbox",
+    tag: "Coming Soon",
   },
 ]
 
@@ -255,9 +259,42 @@ const faqData = [
   },
 ]
 
+interface SearchResult {
+  title: string
+  description: string
+  category: string
+}
+
+const searchIndex: SearchResult[] = [
+  ...quickstartData.map(d => ({ title: d.title, description: d.desc, category: "Quickstart" })),
+  ...apiReferenceData.flatMap(d => d.endpoints.map(e => ({
+    title: `${d.title}: ${e.method} ${e.path}`,
+    description: e.desc,
+    category: "API Reference"
+  }))),
+  ...sdkData.map(d => ({ title: d.title, description: d.desc, category: "SDKs" })),
+  ...authData.map(d => ({ title: d.title, description: d.desc, category: "Authentication" })),
+  ...codeExampleData.map(d => ({
+    title: d.title,
+    description: `Code example in ${d.lang}`,
+    category: "Code Examples"
+  })),
+  ...tutorialData.map(d => ({ title: d.title, description: d.desc, category: "Tutorials" })),
+  ...faqData.map(d => ({ title: d.q, description: d.a.slice(0, 120).replace(/\n/g, " ") + "...", category: "FAQ" })),
+]
+
 export default function Documentation() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+
+  const filteredResults = searchQuery
+    ? searchIndex.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : []
 
   const fadeUp = (delay: number = 0) => ({
     initial: { opacity: 0, y: 20 },
@@ -268,32 +305,44 @@ export default function Documentation() {
 
   return (
     <main>
+      <SEO title="Documentation" description="Cainoa developer documentation — API references, SDKs, code examples, and tutorials for integrating AI, fintech, and infrastructure platforms." path="/resources/documentation" />
       <PageHero
         badge="Resources / Documentation"
         title="Developer Documentation"
         subtitle="Everything you need to integrate Cainoa's AI infrastructure, fintech APIs, and enterprise platforms into your systems."
       />
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Getting Started"
             subtitle="Jump into Cainoa's platform with our quickstart guides. From installation to your first API call in minutes."
             align="center"
           />
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="mt-6 max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+              SDK and CLI tools are currently in development. Documentation reflects our planned API surface.
+            </div>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
             {quickstartData.map((item, i) => (
               <motion.div
                 key={item.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
-                <item.icon size={28} className="text-accent mb-5" />
+                <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{item.title}</h3>
+                {item.tag && (
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold mb-3">
+                    {item.tag}
+                  </span>
+                )}
                 <p className="text-sm text-muted-text leading-relaxed mb-5">{item.desc}</p>
                 <div className="rounded-2xl bg-primary/5 px-4 py-3 font-mono text-xs text-primary">
-                  <span className="text-accent">$</span> {item.code}
+                  <span className="text-primary">$</span> {item.code}
                 </div>
               </motion.div>
             ))}
@@ -301,18 +350,94 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center mb-10"
+          >
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary-bg mb-6">
+              <Search size={28} className="text-primary" />
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+              Search Documentation
+            </h2>
+            <p className="mt-4 text-lg text-muted-text leading-relaxed">
+              Find the exact documentation, API reference, or code example you need.
+            </p>
+            <div className="mt-8 relative max-w-xl mx-auto">
+              <Search
+                size={20}
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-text"
+              />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search API references, SDKs, tutorials..."
+                aria-label="Search documentation"
+                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-white text-primary placeholder:text-muted-text focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300"
+              />
+            </div>
+          </motion.div>
+
+          {searchQuery && filteredResults.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="max-w-3xl mx-auto space-y-3"
+            >
+              <p className="text-sm text-muted-text mb-4">
+                {filteredResults.length} result{filteredResults.length !== 1 ? "s" : ""} for &quot;{searchQuery}&quot;
+              </p>
+              {filteredResults.map((r, i) => (
+                <motion.div
+                  key={`${r.category}-${r.title}-${i}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.03 }}
+                  className="p-5 rounded-2xl border border-border bg-white hover:shadow-md transition-all duration-300"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-bg text-primary text-xs font-semibold shrink-0 mt-0.5">
+                      {r.category}
+                    </span>
+                    <div>
+                      <h4 className="font-heading font-bold text-primary text-sm">{r.title}</h4>
+                      <p className="text-xs text-muted-text mt-1 leading-relaxed">{r.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+          {searchQuery && filteredResults.length === 0 && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center text-sm text-muted-text"
+            >
+              No results found for &quot;{searchQuery}&quot;. Try a different search term.
+            </motion.p>
+          )}
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="API Reference"
             subtitle="Comprehensive documentation for Cainoa's REST, GraphQL, and WebSocket APIs."
           />
-          <div className="mt-12 space-y-6">
+          <div className="mt-10 space-y-6">
             {apiReferenceData.map((api, i) => (
               <motion.div
                 key={api.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white p-8 hover:border-accent/20 transition-all duration-500"
+                className="rounded-3xl border border-border bg-white p-8 transition-all duration-500"
               >
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">{api.title}</h3>
                 <p className="text-muted-text text-sm leading-relaxed mb-6">{api.desc}</p>
@@ -325,7 +450,7 @@ export default function Documentation() {
                       <span
                         className={`inline-flex items-center justify-center w-14 h-7 rounded-lg font-bold text-xs tracking-wider ${
                           ep.method === "POST"
-                            ? "bg-accent/10 text-accent"
+                            ? "bg-secondary-bg text-primary"
                             : ep.method === "GET"
                               ? "bg-blue-100 text-blue-600"
                               : ep.method === "PUT"
@@ -348,22 +473,28 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="SDKs & Libraries"
             subtitle="Official Cainoa SDKs for every major programming language and runtime."
             align="center"
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-6 max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+              SDKs are currently in development and will be published on GitHub and npm/pip when ready.
+            </div>
+          </div>
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {sdkData.map((sdk, i) => (
               <motion.div
                 key={sdk.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
               >
-                <sdk.icon size={28} className="text-accent mb-5" />
+                <sdk.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{sdk.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{sdk.desc}</p>
               </motion.div>
@@ -374,7 +505,7 @@ export default function Documentation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-12 text-center"
+            className="mt-10 text-center"
           >
             <Button size="lg" className="rounded-full gap-2 group">
               View All SDKs <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -383,26 +514,26 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Authentication & Security"
             subtitle="Cainoa's multi-layered security model ensures your data and integrations are protected at every level."
           />
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
             {authData.map((auth, i) => (
               <motion.div
                 key={auth.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white p-8 hover:border-accent/20 transition-all duration-500"
+                className="rounded-3xl border border-border bg-white p-8 transition-all duration-500"
               >
-                <Lock size={28} className="text-accent mb-5" />
+                <Lock size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{auth.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed mb-5">{auth.desc}</p>
                 <ul className="space-y-2">
                   {auth.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-text">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -413,23 +544,23 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Code Examples"
             subtitle="Ready-to-run code snippets for common Cainoa API workflows across all supported languages."
             align="center"
           />
-          <div className="mt-16 grid md:grid-cols-2 gap-6">
+          <div className="mt-10 grid md:grid-cols-2 gap-6">
             {codeExampleData.map((example, i) => (
               <motion.div
                 key={example.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white overflow-hidden hover:border-accent/20 transition-all duration-500"
+                className="rounded-3xl border border-border bg-white overflow-hidden transition-all duration-500"
               >
                 <div className="flex items-center justify-between px-6 pt-6 pb-3">
                   <div className="flex items-center gap-3">
-                    <example.icon size={20} className="text-accent" />
+                    <example.icon size={20} className="text-primary" />
                     <h3 className="font-heading font-bold text-primary">{example.title}</h3>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold">
@@ -447,26 +578,26 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Tutorials"
             subtitle="Hands-on tutorials that walk you through building real-world applications with Cainoa."
             align="center"
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {tutorialData.map((tutorial, i) => (
               <motion.div
                 key={tutorial.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 flex flex-col"
+                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 flex flex-col"
               >
-                <PlayCircle size={32} className="text-accent mb-5" />
+                <PlayCircle size={32} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{tutorial.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed mb-6 flex-1">{tutorial.desc}</p>
                 <div className="flex items-center gap-3 text-xs">
-                  <span className="px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold">
+                  <span className="px-3 py-1 rounded-full bg-secondary-bg text-primary font-semibold">
                     {tutorial.duration}
                   </span>
                   <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
@@ -479,14 +610,14 @@ export default function Documentation() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Frequently Asked Questions"
             subtitle="Quick answers to the most common questions about integrating with Cainoa."
             align="center"
           />
-          <div className="mt-12 max-w-3xl mx-auto space-y-4">
+          <div className="mt-10 max-w-3xl mx-auto space-y-4">
             {faqData.map((faq, i) => (
               <motion.div
                 key={i}
@@ -517,51 +648,6 @@ export default function Documentation() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent/10 mb-6">
-              <Search size={28} className="text-accent" />
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">
-              Search Documentation
-            </h2>
-            <p className="mt-4 text-lg text-muted-text leading-relaxed">
-              Find the exact documentation, API reference, or code example you need.
-            </p>
-            <div className="mt-8 relative max-w-xl mx-auto">
-              <Search
-                size={20}
-                className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-text"
-              />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search API references, SDKs, tutorials..."
-                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-white text-primary placeholder:text-muted-text focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300"
-              />
-            </div>
-            {searchQuery && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mt-4 text-sm text-muted-text"
-              >
-                Search results will appear here. This is a UI demo — full search functionality
-                coming soon.
-              </motion.p>
-            )}
-          </motion.div>
         </div>
       </section>
 

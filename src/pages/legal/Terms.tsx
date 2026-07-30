@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import CTASection from "../../components/shared/CTASection"
 import { Button } from "../../components/ui/button"
@@ -55,13 +56,14 @@ export default function Terms() {
 
   return (
     <main>
+      <SEO title="Terms of Service" description="Cainoa's terms of service — the conditions governing your use of Cainoa's platforms, APIs, and services." path="/legal/terms" />
       <PageHero
         badge="Legal / Terms of Service"
         title="Terms of Service"
         subtitle="Last updated: January 2025. These terms govern your use of Cainoa's platforms, APIs, and services."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-4xl px-6 lg:px-8 space-y-8">
           {sections.map((section, i) => (
             <motion.div
@@ -70,11 +72,11 @@ export default function Terms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="p-8 rounded-3xl bg-white border border-border hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+              className="p-8 rounded-3xl bg-white border border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
             >
               <div className="flex items-start gap-5">
-                <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 flex items-center justify-center">
-                  <section.icon size={22} className="text-accent" />
+                <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-secondary-bg to-secondary-bg border border-border flex items-center justify-center">
+                  <section.icon size={22} className="text-primary" />
                 </div>
                 <div>
                   <h2 className="font-heading text-xl font-bold text-primary mb-3">{section.title}</h2>
@@ -88,7 +90,7 @@ export default function Terms() {
 
       <section className="py-20 bg-secondary-bg/50">
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <p className="text-muted-text mb-6">For questions about these terms, please contact our legal team at <span className="text-accent font-medium">legal@cainoa.com</span></p>
+          <p className="text-muted-text mb-6">For questions about these terms, please contact our legal team at <span className="text-muted-text font-medium">legal@cainoa.com</span></p>
           <Button variant="outline" size="lg" className="rounded-full" onClick={() => navigate("/about")}>
             Contact Our Team <ArrowRight size={18} className="ml-1" />
           </Button>

@@ -4,6 +4,7 @@ import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
 import { Button } from "../../components/ui/button"
 import { Brain, Cpu, Bot, BarChart3, Network, Zap, Shield, ArrowRight } from "lucide-react"
+import SEO from "../../components/SEO"
 import { useNavigate } from "react-router-dom"
 
 const llmFeatures = [
@@ -108,15 +109,16 @@ export default function AIPlatform() {
 
   return (
     <main>
+      <SEO title="AI Platform" description="Enterprise AI inference, model orchestration, and LLM integration platform built for African use cases and regulatory requirements." path="/solutions/ai-platform" />
       <PageHero
         badge="Solutions / AI Platform"
         title="Enterprise AI Built for Scale"
         subtitle="From LLM integration to autonomous AI agents — we deploy intelligent systems that transform how enterprises operate."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -148,22 +150,22 @@ export default function AIPlatform() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <Brain size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Brain size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="Large Language Models"
             title="LLM Infrastructure for the Enterprise"
             subtitle="Deploy, fine-tune, and serve large language models at scale — with full control over data, costs, and performance."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {llmFeatures.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -172,9 +174,9 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <f.icon size={28} className="text-accent mb-5" />
+                <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -183,14 +185,14 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="AI Automation"
             title="Intelligent Automation at Scale"
             subtitle="Transform manual processes into autonomous, AI-driven operations that reduce costs and accelerate decision-making."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {automationFeatures.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -199,9 +201,9 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <f.icon size={28} className="text-accent mb-5" />
+                <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -210,14 +212,14 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="AI Agents"
             title="Autonomous Enterprise Agents"
             subtitle="Deploy intelligent agents that reason, act, and learn — transforming how work gets done across your organization."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {agentFeatures.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -226,9 +228,9 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <f.icon size={28} className="text-accent mb-5" />
+                <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -237,9 +239,9 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -247,8 +249,8 @@ export default function AIPlatform() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <BarChart3 size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <BarChart3 size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
             <motion.div
@@ -279,14 +281,14 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             badge="AI Infrastructure"
             title="The Foundation for AI at Scale"
             subtitle="Purpose-built infrastructure designed to train, serve, and monitor AI models in production environments."
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {infrastructureFeatures.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -295,9 +297,9 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <f.icon size={28} className="text-accent mb-5" />
+                <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -306,9 +308,9 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -341,17 +343,17 @@ export default function AIPlatform() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <Network size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Network size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -359,8 +361,8 @@ export default function AIPlatform() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 border border-accent/20 flex items-center justify-center p-12">
-                <Shield size={120} className="text-accent/40" />
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border border-border flex items-center justify-center p-12">
+                <Shield size={120} className="text-muted-text/20" />
               </div>
             </motion.div>
             <motion.div
@@ -391,14 +393,14 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Why Choose Cainoa for AI"
             subtitle="Enterprise AI infrastructure engineered for performance, security, and scale."
             align="center"
           />
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((b, i) => (
               <motion.div
                 key={b.title}
@@ -407,9 +409,9 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
-                <b.icon size={28} className="text-accent mb-5" />
+                <b.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{b.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{b.desc}</p>
               </motion.div>
@@ -418,10 +420,9 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="relative py-28 lg:py-36 bg-primary">
+      <section className="relative py-20 lg:py-28 bg-primary">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent/5 to-transparent" />
-          <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div

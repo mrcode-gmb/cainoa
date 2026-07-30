@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import SEO from "../../components/SEO"
 import PageHero from "../../components/shared/PageHero"
 import SectionHeading from "../../components/shared/SectionHeading"
 import CTASection from "../../components/shared/CTASection"
@@ -8,6 +9,12 @@ import {
   Quote, ArrowRight, Users,
 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+
+// TODO: Confirm each case study below represents a real client engagement
+// with a real client who has given written permission for their name,
+// logo, and testimonial to appear publicly on this website.
+// Fabricated testimonials are a legal exposure under advertising law.
+// Remove any entry that cannot be verified.
 
 interface Testimonial {
   text: string
@@ -162,12 +169,12 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="rounded-3xl bg-gradient-to-br from-primary via-primary/95 to-primary overflow-hidden border border-accent/10"
+        className="rounded-3xl bg-gradient-to-br from-primary via-primary/95 to-primary overflow-hidden border border-border"
       >
         <div className="grid lg:grid-cols-5">
           <div className="lg:col-span-3 p-8 lg:p-12 xl:p-16">
             <div className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase">
                 <TrendingUp size={14} />
                 Featured Case Study
               </span>
@@ -177,11 +184,11 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center">
-                <Icon size={28} className="text-accent" />
+              <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center">
+                <Icon size={28} className="text-primary" />
               </div>
               <div>
-                <p className="text-sm text-accent font-semibold">{study.industry}</p>
+                <p className="text-sm text-muted-text font-semibold">{study.industry}</p>
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-white">{study.client}</h3>
               </div>
             </div>
@@ -209,7 +216,7 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
             </div>
 
             <div className="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10 relative">
-              <Quote size={24} className="text-accent/40 absolute top-4 left-4" />
+              <Quote size={24} className="text-muted-text/20 absolute top-4 left-4" />
               <blockquote className="pl-8 text-white/80 italic leading-relaxed">
                 &ldquo;{study.testimonial.text}&rdquo;
               </blockquote>
@@ -221,13 +228,12 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
           </div>
 
           <div className="lg:col-span-2 relative hidden lg:block">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary-bg to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-48 h-48 rounded-full bg-accent/10 blur-3xl" />
             </div>
             <div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
-              <div className="w-24 h-24 rounded-3xl bg-accent/15 flex items-center justify-center mb-6">
-                <Icon size={48} className="text-accent" />
+              <div className="w-24 h-24 rounded-3xl bg-secondary-bg flex items-center justify-center mb-6">
+                <Icon size={48} className="text-primary" />
               </div>
               <h4 className="font-heading text-2xl font-bold text-white mb-2">{study.client}</h4>
               <p className="text-white/60">{study.industry}</p>
@@ -244,15 +250,15 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="rounded-3xl bg-white border border-border overflow-hidden group hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+      className="rounded-3xl bg-white border border-border overflow-hidden group hover:shadow-md transition-all duration-500"
     >
       <div className="p-8 lg:p-10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-            <Icon size={24} className="text-accent" />
+          <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
+            <Icon size={24} className="text-primary" />
           </div>
           <div>
-            <p className="text-xs text-accent font-semibold tracking-wider uppercase">{study.industry}</p>
+            <p className="text-xs text-muted-text font-semibold tracking-wider uppercase">{study.industry}</p>
             <h3 className="font-heading text-xl font-bold text-primary">{study.client}</h3>
           </div>
         </div>
@@ -269,7 +275,7 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
         </div>
 
         <div className="mt-6 p-5 rounded-2xl bg-primary/5 border border-primary/10 relative">
-          <Quote size={18} className="text-accent/30 absolute top-3 left-3" />
+          <Quote size={18} className="text-muted-text/20 absolute top-3 left-3" />
           <blockquote className="pl-6 text-muted-text text-sm italic leading-relaxed">
             &ldquo;{study.testimonial.text}&rdquo;
           </blockquote>
@@ -287,13 +293,14 @@ export default function CaseStudies() {
   const navigate = useNavigate()
   return (
     <main>
+      <SEO title="Case Studies" description="Case studies showcasing Cainoa's work in AI infrastructure, cybersecurity, and fintech platform delivery for African enterprises." path="/resources/case-studies" />
       <PageHero
         badge="Resources / Case Studies"
         title="Real Impact. Real Transformation."
         subtitle="Discover how Cainoa has delivered measurable results for governments, financial institutions, cooperatives, and educational institutions across Africa."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="Featured Case Study"
@@ -308,14 +315,14 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-secondary-bg/50">
+      <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             title="More Success Stories"
             subtitle="From fintech to healthcare to education — see how we deliver results across industries."
             align="center"
           />
-          <div className="mt-16 space-y-8">
+          <div className="mt-12 space-y-8">
             {caseStudies.filter((s) => !s.featured).map((study, i) => (
               <CaseStudyCard key={study.id} study={study} index={i} />
             ))}

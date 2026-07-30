@@ -137,15 +137,15 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-white via-secondary-bg/30 to-white">
       <AnimatedBackground />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 pt-44 lg:pt-48">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 pt-36 lg:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-8">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-bg border border-border text-primary text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             Enterprise AI Infrastructure
           </div>
 
@@ -156,7 +156,7 @@ export default function HeroSection() {
             of a Modern Economy
           </h1>
 
-          <p className="mt-8 text-lg sm:text-xl text-muted-text max-w-2xl leading-relaxed">
+          <p className="mt-6 text-lg sm:text-xl text-muted-text max-w-2xl leading-relaxed">
             Home to the region&apos;s leading engineers. We deploy advanced AI
             integrations, secure fintech platforms, and scalable digital
             infrastructure for governments, enterprises, cooperatives,
@@ -168,13 +168,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 max-w-xl"
+          className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 max-w-xl"
         >
           <div className="relative w-full">
             <input
               type="email"
               placeholder="Enter your organization email"
-              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all duration-300 text-base"
+              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-white text-primary placeholder:text-muted-text/70 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all duration-300 text-base"
               aria-label="Organization email"
             />
           </div>
@@ -188,20 +188,20 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 flex items-center gap-4 sm:gap-6 text-sm text-muted-text"
+          className="mt-12 flex items-center gap-4 sm:gap-6 text-sm text-muted-text"
         >
           <div className="flex -space-x-2 sm:-space-x-3">
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={aqtrisLogo} alt="Aqtris" className="h-5 sm:h-6 w-auto" />
+              <img src={aqtrisLogo} alt="Aqtris" loading="eager" className="h-5 sm:h-6 w-auto" />
             </div>
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={gsuLogo} alt="GSU Alumni" className="h-6 sm:h-7 w-auto" />
+              <img src={gsuLogo} alt="GSU Alumni" loading="eager" className="h-6 sm:h-7 w-auto" />
             </div>
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={benevolenceLogo} alt="Benevolence" className="h-5 sm:h-6 w-auto object-contain" />
+              <img src={benevolenceLogo} alt="Benevolence" loading="eager" className="h-5 sm:h-6 w-auto object-contain" />
             </div>
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={fmbnLogo} alt="FMBN Equishare" className="h-5 sm:h-6 w-auto object-contain" />
+              <img src={fmbnLogo} alt="FMBN Equishare" loading="eager" className="h-5 sm:h-6 w-auto object-contain" />
             </div>
           </div>
           <span className="font-medium">Trusted by leading organizations across Africa</span>

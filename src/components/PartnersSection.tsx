@@ -42,20 +42,20 @@ function hasLogo(partner: Partner): partner is PartnerWithLogo {
 
 export default function PartnersSection() {
   return (
-    <section id="partners" className="relative py-28 lg:py-36">
+    <section id="partners" className="relative py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className="font-heading text-4xl sm:text-5xl font-bold text-primary">
             Powering Innovation{" "}
             <span className="text-accent-mint">Alongside</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-text leading-relaxed">
+          <p className="mt-4 text-lg text-muted-text leading-relaxed">
             Trusted by organizations building the future of Africa&apos;s digital
             economy.
           </p>
@@ -70,24 +70,25 @@ export default function PartnersSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className="group relative flex flex-col items-center justify-center p-6 rounded-3xl border border-border bg-white hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500"
+              className="group relative flex flex-col items-center justify-center p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
             >
               {hasLogo(partner) ? (
                 <div className="w-full h-24 flex items-center justify-center mb-4 px-4">
                   <img
                     src={partner.logo}
                     alt={partner.name}
+                    loading="lazy"
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
               ) : (
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border/50 flex items-center justify-center mb-4 group-hover:from-accent/10 group-hover:to-accent/5 group-hover:border-accent/20 transition-all duration-500">
-                  <span className="font-heading text-xl font-bold text-primary group-hover:text-accent transition-colors duration-500">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary-bg border border-border/50 flex items-center justify-center mb-4 group-hover:from-secondary-bg group-hover:to-secondary-bg group-hover:border-border transition-all duration-500">
+                  <span className="font-heading text-xl font-bold text-primary group-hover:text-primary transition-colors duration-500">
                     {partner.initials}
                   </span>
                 </div>
               )}
-              <h3 className="font-heading text-sm font-semibold text-primary text-center group-hover:text-accent transition-colors duration-500">
+              <h3 className="font-heading text-sm font-semibold text-primary text-center group-hover:text-primary transition-colors duration-500">
                 {partner.name}
               </h3>
               <p className="text-xs text-muted-text mt-1 text-center">

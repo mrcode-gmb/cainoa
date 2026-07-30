@@ -39,7 +39,7 @@ export default function SectionHeading({
       className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
     >
       {badge && (
-        <span className="inline-block px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-block px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase mb-3">
           {badge}
         </span>
       )}
@@ -47,7 +47,7 @@ export default function SectionHeading({
         {renderTitle()}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-muted-text leading-relaxed">
+        <p className="mt-3 text-lg text-muted-text leading-relaxed">
           {subtitle}
         </p>
       )}

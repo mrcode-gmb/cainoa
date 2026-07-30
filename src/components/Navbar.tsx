@@ -2,20 +2,21 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from "../assets/cainoa logo.png"
 
 const navLinks = [
-  { label: "Ecosystem", href: "/solutions/infrastructure" },
+  { label: "Infrastructure", href: "/solutions/infrastructure" },
   { label: "Partners", href: "/#partners" },
-  { label: "Blueprint", href: "/solutions/cybersecurity" },
-  { label: "Contact", href: "/about" },
+  { label: "Cybersecurity", href: "/solutions/cybersecurity" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     setMobileOpen(false)
@@ -40,6 +41,7 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Cainoa"
+              loading="eager"
               className="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <span className="sm:block font-heading text-2xl font-bold text-primary tracking-tight">
@@ -64,7 +66,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button size="default" className="rounded-full">
+            <Button size="default" className="rounded-full" onClick={() => navigate("/contact")}>
               Partner With Us
             </Button>
           </div>
@@ -112,7 +114,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
               >
-                <Button size="lg" className="w-full rounded-full mt-4">
+                <Button size="lg" className="w-full rounded-full mt-4" onClick={() => navigate("/contact")}>
                   Partner With Us
                 </Button>
               </motion.div>
