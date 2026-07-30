@@ -45,7 +45,7 @@ export default function Navbar() {
               className="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <span className="sm:block font-heading text-2xl font-bold text-primary tracking-tight">
-              Cainoa
+              Cainoa 
             </span>
           </Link>
 
