@@ -7,11 +7,8 @@ export default function CTASection() {
   const navigate = useNavigate()
 
   return (
-    <section className="relative py-20 lg:py-28 bg-primary">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
-      </div>
-
+    <section className="relative py-20 lg:py-28 bg-gray-50">
+    
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -20,11 +17,11 @@ export default function CTASection() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
             Let&apos;s Build the{" "}
             <span className="text-accent-mint">Future Together</span>
           </h2>
-          <p className="mt-4 text-lg text-white/60 leading-relaxed">
+          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
             Partner with Cainoa to deliver secure, scalable, and intelligent
             digital infrastructure.
           </p>
@@ -43,7 +40,7 @@ export default function CTASection() {
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full gap-2 group border-white/20 text-white hover:bg-white/10"
+              className="rounded-full gap-2 group border-gray-900/20 text-gray-600 hover:bg-gray-900/10 hover:text-gray-900"
               onClick={() => navigate("/contact")}
             >
               Contact Our Team

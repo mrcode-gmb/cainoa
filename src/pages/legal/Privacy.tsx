@@ -206,13 +206,13 @@ export default function Privacy() {
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
                           <p className="text-sm font-semibold text-primary mb-1">Privacy Inquiries</p>
-                          <a href="mailto:privacy@cainoa.com" className="text-accent hover:underline text-sm">
+                          <a href="mailto:privacy@cainoa.com" className="text-primary hover:underline text-sm">
                             privacy@cainoa.com
                           </a>
                         </div>
                         <div>
                           <p className="text-sm font-semibold text-primary mb-1">Data Protection Officer</p>
-                          <a href="mailto:dpo@cainoa.com" className="text-accent hover:underline text-sm">
+                          <a href="mailto:dpo@cainoa.com" className="text-primary hover:underline text-sm">
                             dpo@cainoa.com
                           </a>
                         </div>

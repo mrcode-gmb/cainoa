@@ -357,7 +357,7 @@ export default function Research() {
                       <span className="font-mono">DOI: {pub.doi}</span>
                     </div>
                   </div>
-                  <ExternalLink size={18} className="shrink-0 text-muted-text/40 group-hover:text-accent transition-colors mt-2" />
+                  <ExternalLink size={18} className="shrink-0 text-muted-text/40 group-hover:text-primary transition-colors mt-2" />
                 </div>
               </motion.div>
             ))}
@@ -455,7 +455,7 @@ export default function Research() {
             >
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent hover:bg-accent/90 mt-10"
+                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90 mt-10"
                 onClick={() => navigate("/contact")}
               >
                 Explore Research Collaboration

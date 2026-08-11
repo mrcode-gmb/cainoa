@@ -55,7 +55,7 @@ export default function Navbar() {
                 key={link.label}
                 to={link.href}
                 className={`relative text-sm font-medium transition-colors duration-200 group ${location.pathname === link.href
-                    ? "text-accent"
+                    ? "text-primary font-semibold"
                     : "text-muted-text hover:text-primary"
                   }`}
               >
@@ -101,8 +101,8 @@ export default function Navbar() {
                   <Link
                     to={link.href}
                     className={`block text-lg font-medium transition-colors ${location.pathname === link.href
-                        ? "text-accent"
-                        : "text-primary hover:text-accent"
+                        ? "text-primary font-semibold"
+                        : "text-primary hover:text-muted-text"
                       }`}
                   >
                     {link.label}

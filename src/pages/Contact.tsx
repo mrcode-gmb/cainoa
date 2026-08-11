@@ -48,7 +48,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-heading font-bold text-primary">Email</h3>
                     <p className="text-sm text-muted-text mt-1">
-                      <a href="mailto:partner@cainoa.com" className="text-accent hover:underline">partner@cainoa.com</a>
+                      <a href="mailto:partner@cainoa.com" className="text-primary hover:underline">partner@cainoa.com</a>
                     </p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export default function Contact() {
                         type="text"
                         required
                         placeholder="Your name"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -104,7 +104,7 @@ export default function Contact() {
                         type="text"
                         required
                         placeholder="Company or institution name"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -114,7 +114,7 @@ export default function Contact() {
                         type="email"
                         required
                         placeholder="you@organization.com"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -122,7 +122,7 @@ export default function Contact() {
                       <select
                         id="service"
                         required
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       >
                         <option value="">Select a service</option>
                         <option value="ai">AI & LLM Integration</option>
@@ -139,7 +139,7 @@ export default function Contact() {
                         required
                         rows={4}
                         placeholder="Tell us about your project or inquiry..."
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300 resize-y"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300 resize-y"
                       />
                     </div>
                     <Button type="submit" size="lg" className="w-full rounded-full gap-2 group">

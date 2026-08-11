@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary:       #014527;
-  --color-accent: #024428;
+    --color-primary:       #0F172A;
+  --color-accent: #014527;
   --color-accent-light: #0B6B3A;
   --color-accent-mint: #8ECE9C;
   --color-accent-tint: #E6F0EA;
@@ -49,6 +49,6 @@ body {
 }
 
 ::selection {
-  background-color: #024428;
+  background-color: #0B6B3A;
   color: #FFFFFF;
 }

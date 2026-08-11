@@ -389,7 +389,7 @@ export default function Careers() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent hover:bg-accent/90"
+                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90"
                 onClick={() => navigate("/careers")}
               >
                 Apply Now

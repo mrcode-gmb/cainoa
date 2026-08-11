@@ -47,7 +47,7 @@ function AnimatedBackground() {
     }
 
     const drawGrid = () => {
-      ctx.strokeStyle = "rgba(22, 163, 74, 0.06)"
+      ctx.strokeStyle = "rgba(1, 69, 39, 0.08)"
       ctx.lineWidth = 1
       const spacing = 60
       for (let x = 0; x < canvas.width; x += spacing) {
@@ -73,8 +73,8 @@ function AnimatedBackground() {
         canvas.height * 0.4,
         400
       )
-      grd1.addColorStop(0, "rgba(22, 163, 74, 0.08)")
-      grd1.addColorStop(1, "rgba(22, 163, 74, 0)")
+      grd1.addColorStop(0, "rgba(1, 69, 39, 0.08)")
+      grd1.addColorStop(1, "rgba(1, 69, 39, 0)")
       ctx.fillStyle = grd1
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -108,7 +108,7 @@ function AnimatedBackground() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(22, 163, 74, ${p.alpha})`
+        ctx.fillStyle = `rgba(1, 69, 39, ${p.alpha})`
         ctx.fill()
       })
 
@@ -174,7 +174,7 @@ export default function HeroSection() {
             <input
               type="email"
               placeholder="Enter your organization email"
-              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-white text-primary placeholder:text-muted-text/70 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all duration-300 text-base"
+              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-white text-primary placeholder:text-muted-text/70 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-base"
               aria-label="Organization email"
             />
           </div>

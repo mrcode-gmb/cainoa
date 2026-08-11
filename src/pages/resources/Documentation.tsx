@@ -379,7 +379,7 @@ export default function Documentation() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search API references, SDKs, tutorials..."
                 aria-label="Search documentation"
-                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-white text-primary placeholder:text-muted-text focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300"
+                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-white text-primary placeholder:text-muted-text focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
               />
             </div>
           </motion.div>
@@ -632,7 +632,7 @@ export default function Documentation() {
                   className="flex items-center justify-between w-full p-6 text-left"
                 >
                   <span className="font-heading font-bold text-primary pr-4">{faq.q}</span>
-                  <FileQuestion size={20} className="text-accent shrink-0" />
+                  <FileQuestion size={20} className="text-primary shrink-0" />
                 </button>
                 <motion.div
                   initial={false}

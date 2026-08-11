@@ -9,9 +9,9 @@ const capabilities = [
     description:
       "Custom LLM deployment, fine-tuning, and AI pipeline engineering for enterprise-scale natural language processing and decision intelligence.",
     icon: Cpu,
-    color: "from-blue-500/20 to-blue-600/5",
-    border: "border-blue-500/20",
-    accent: "text-blue-500",
+    color: "from-secondary-bg to-secondary-bg",
+    border: "border-border",
+    accent: "text-primary",
   },
   {
     title: "Enterprise Architecture",
@@ -30,9 +30,9 @@ const capabilities = [
     description:
       "Zero-trust security architecture, implementation, and continuous monitoring for critical digital infrastructure.",
     icon: Shield,
-    color: "from-purple-500/20 to-purple-600/5",
-    border: "border-purple-500/20",
-    accent: "text-purple-500",
+    color: "from-secondary-bg to-secondary-bg",
+    border: "border-border",
+    accent: "text-primary",
   },
 ]
 

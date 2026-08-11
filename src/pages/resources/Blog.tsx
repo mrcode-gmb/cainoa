@@ -154,8 +154,8 @@ export default function Blog() {
                   }}
                   className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap border ${
                     activeCategory === cat
-                      ? "bg-accent text-white border-accent shadow-lg shadow-accent/25"
-                      : "bg-white text-muted-text border-border hover:border-accent/30 hover:text-accent"
+                      ? "bg-primary text-white border-primary shadow-lg shadow-primary/25"
+                      : "bg-white text-muted-text border-border hover:border-primary/30 hover:text-primary"
                   }`}
                 >
                   {cat}
@@ -178,7 +178,7 @@ export default function Blog() {
                 </div>
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <CategoryBadge label={featuredArticle.category} />
-                  <h2 className="mt-4 font-heading text-2xl lg:text-3xl font-bold text-primary leading-tight group-hover:text-accent transition-colors">
+                  <h2 className="mt-4 font-heading text-2xl lg:text-3xl font-bold text-primary leading-tight group-hover:text-primary transition-colors">
                     {featuredArticle.title}
                   </h2>
                   <p className="mt-4 text-muted-text leading-relaxed">{featuredArticle.excerpt}</p>
@@ -199,7 +199,7 @@ export default function Blog() {
                   <div className="mt-6">
                     <Button
                       variant="ghost"
-                      className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
+                      className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-primary"
                     >
                       Read Article <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
                     </Button>
@@ -223,7 +223,7 @@ export default function Blog() {
                 <PlaceholderImage icon={BookOpen} />
                 <div className="p-6 flex flex-col flex-1">
                   <CategoryBadge label={article.category} />
-                  <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug group-hover:text-accent transition-colors">
+                  <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
                   <p className="mt-2 text-sm text-muted-text leading-relaxed flex-1">{article.excerpt}</p>
@@ -289,7 +289,7 @@ export default function Blog() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="flex-1 h-14 px-6 rounded-2xl border border-border bg-white text-primary placeholder:text-muted-text/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300"
+                  className="flex-1 h-14 px-6 rounded-2xl border border-border bg-white text-primary placeholder:text-muted-text/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all duration-300"
                 />
                 <Button
                   size="lg"
@@ -302,7 +302,7 @@ export default function Blog() {
               </form>
               <p className="mt-4 text-xs text-muted-text">
                 No spam, ever. Unsubscribe anytime. Read our{" "}
-                <a href="#" className="text-accent hover:underline">
+                <a href="#" className="text-primary hover:underline">
                   Privacy Policy
                 </a>
                 .

@@ -448,7 +448,7 @@ export default function AIPlatform() {
             >
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent hover:bg-accent/90 mt-10"
+                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90 mt-10"
                 onClick={() => navigate("/contact")}
               >
                 Request a Demo
