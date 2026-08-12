@@ -11,11 +11,9 @@ import {
   Loader2,
   Mail,
   Newspaper,
-  CheckCircle,
   Clock,
   Send,
   Building,
-  User as UserIcon,
 } from "lucide-react"
 import { Button } from "../../components/ui/button"
 import { useAuth } from "../../lib/auth"
@@ -127,7 +125,7 @@ export default function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-secondary-bg/50">
-      <header className="bg-white border-b border-border">
+      <header className="bg-card-bg border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link to="/" className="font-heading text-xl font-bold text-primary">
@@ -162,7 +160,7 @@ export default function AdminDashboard() {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 mainTab === "news"
                   ? "bg-primary text-white shadow-sm"
-                  : "bg-white text-muted-text hover:text-primary border border-border"
+                  : "bg-card-bg text-muted-text hover:text-primary border border-border"
               }`}
             >
               <Newspaper size={16} /> Manage News &amp; Blog ({items.length})
@@ -172,7 +170,7 @@ export default function AdminDashboard() {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all relative ${
                 mainTab === "inbox"
                   ? "bg-primary text-white shadow-sm"
-                  : "bg-white text-muted-text hover:text-primary border border-border"
+                  : "bg-card-bg text-muted-text hover:text-primary border border-border"
               }`}
             >
               <Mail size={16} /> Contact Inbox ({messages.length})
@@ -211,7 +209,7 @@ export default function AdminDashboard() {
                     className={`px-4 py-2 rounded-full text-xs font-semibold transition-all border ${
                       filter === f.key
                         ? "bg-accent text-white border-accent"
-                        : "bg-white text-muted-text border-border hover:text-primary"
+                        : "bg-card-bg text-muted-text border-border hover:text-primary"
                     }`}
                   >
                     {f.label}
@@ -232,7 +230,7 @@ export default function AdminDashboard() {
                   <Loader2 size={28} className="text-muted-text animate-spin" />
                 </div>
               ) : filtered.length === 0 ? (
-                <div className="py-24 text-center rounded-3xl bg-white border border-border">
+                <div className="py-24 text-center rounded-3xl bg-card-bg border border-border">
                   <p className="text-muted-text">
                     No {filter !== "all" ? filter : ""} items yet.{" "}
                     <Link to="/admin/news/new" className="text-accent font-semibold hover:underline">
@@ -245,7 +243,7 @@ export default function AdminDashboard() {
                   {filtered.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-3xl bg-white border border-border p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-primary/30 transition-all"
+                      className="rounded-3xl bg-card-bg border border-border p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-primary/30 transition-all"
                     >
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
@@ -318,7 +316,7 @@ export default function AdminDashboard() {
             <div>
               <h1 className="font-heading text-2xl font-bold text-primary">Contact Messages</h1>
               <p className="mt-1 text-sm text-muted-text">
-                Submissions sent via <code className="bg-white px-1.5 py-0.5 rounded font-mono text-xs border border-border">/contact</code> page. Notified to <strong>contact@cainoa.com</strong>.
+                Submissions sent via <code className="bg-card-bg px-1.5 py-0.5 rounded font-mono text-xs border border-border">/contact</code> page. Notified to <strong>contact@cainoa.com</strong>.
               </p>
             </div>
 
@@ -328,7 +326,7 @@ export default function AdminDashboard() {
                   <Loader2 size={28} className="text-muted-text animate-spin" />
                 </div>
               ) : messages.length === 0 ? (
-                <div className="py-24 text-center rounded-3xl bg-white border border-border">
+                <div className="py-24 text-center rounded-3xl bg-card-bg border border-border">
                   <Mail size={40} className="mx-auto text-muted-text/30 mb-3" />
                   <p className="font-heading text-lg font-bold text-primary">No Contact Messages Yet</p>
                   <p className="text-sm text-muted-text mt-1 max-w-sm mx-auto">
@@ -340,7 +338,7 @@ export default function AdminDashboard() {
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
-                      className={`rounded-3xl bg-white border p-6 transition-all ${
+                      className={`rounded-3xl bg-card-bg border p-6 transition-all ${
                         msg.status === "unread"
                           ? "border-accent/40 shadow-sm bg-accent-tint/10"
                           : "border-border"

@@ -33,16 +33,16 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative bg-primary text-white">
+    <footer id="contact" className="relative bg-[#0F172A] dark:bg-[#070A10] text-slate-100 border-t border-slate-800">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="py-16 lg:py-24 border-b border-white/10">
           <div className="max-w-3xl">
-            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
               Ready to build the
               <br />
-              <span className="text-accent-mint">future of Africa?</span>
+              <span className="text-accent-mint dark:text-emerald-400">future of Africa?</span>
             </h2>
-            <p className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <p className="mt-6 text-lg text-white/70 max-w-xl leading-relaxed">
               Partner with Cainoa to deploy AI infrastructure and
               enterprise solutions across the continent.
             </p>
@@ -55,7 +55,7 @@ export default function Footer() {
               />
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90"
+                className="rounded-full gap-2 group bg-accent-mint text-slate-900 hover:bg-accent-mint/90 font-semibold"
               >
                 Get in Touch
                 <ArrowUpRight

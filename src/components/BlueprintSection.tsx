@@ -115,21 +115,21 @@ export default function BlueprintSection() {
                 whileHover={{ scale: 1.02 }}
                 className={`group relative overflow-hidden rounded-3xl border-2 p-8 cursor-default transition-all duration-500 ${
                   cap.highlighted
-                    ? "border-border bg-gradient-to-br from-secondary-bg to-transparent shadow-lg shadow-black/5"
-                    : "border-border bg-white hover:border-primary/20 hover:shadow-xl"
+                    ? "border-border bg-gradient-to-br from-secondary-bg to-card-bg shadow-lg shadow-black/5"
+                    : "border-border bg-card-bg hover:border-primary/40 hover:shadow-xl"
                 }`}
               >
                 <div className="flex items-start gap-5">
                   <div
-                    className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${cap.color} flex items-center justify-center border ${cap.border}`}
+                    className={`shrink-0 w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center border border-border`}
                   >
-                    <cap.icon size={26} className={cap.accent} />
+                    <cap.icon size={26} className="text-primary" />
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-heading text-xl font-bold text-primary">
                       {cap.title}
                     </h3>
-                    <p className={`text-sm font-medium mt-0.5 ${cap.accent}`}>
+                    <p className={`text-sm font-medium mt-0.5 text-accent-mint dark:text-emerald-400`}>
                       {cap.subtitle}
                     </p>
                     <p className="mt-3 text-sm text-muted-text leading-relaxed">

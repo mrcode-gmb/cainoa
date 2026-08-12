@@ -199,7 +199,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -2 }}
-                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 lg:p-10 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <div className="flex items-start gap-5">
                   <div className="shrink-0 w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
@@ -243,7 +243,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-3">{item.title}</h3>
@@ -274,7 +274,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-3">{item.title}</h3>
@@ -305,7 +305,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="group p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 flex flex-col"
+                className="group p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500 flex flex-col"
               >
                 <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center mb-5">
                   <wp.icon size={24} className="text-primary" />
@@ -342,7 +342,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -2 }}
-                className="p-6 lg:p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-6 lg:p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <div className="flex items-start gap-5">
                   <div className="shrink-0 w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center">
@@ -381,7 +381,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <lab.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-1">{lab.title}</h3>
@@ -414,7 +414,7 @@ export default function Research() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 text-center"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500 text-center"
               >
                 <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mx-auto mb-5">
                   <p.icon size={28} className="text-primary" />
@@ -428,10 +428,7 @@ export default function Research() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-24 bg-primary">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
-        </div>
+      <section className="relative py-20 lg:py-24 bg-slate-900 dark:bg-slate-950 border-t border-slate-800 text-white">
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -442,9 +439,9 @@ export default function Research() {
           >
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Partner With Our{" "}
-              <span className="text-accent-mint">Research Team</span>
+              <span className="text-accent-mint dark:text-emerald-400">Research Team</span>
             </h2>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
+            <p className="mt-6 text-lg text-white/70 leading-relaxed">
               Collaborate with Cainoa's researchers on joint projects, sponsored research, and technology transfer initiatives.
             </p>
             <motion.div
@@ -455,7 +452,7 @@ export default function Research() {
             >
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90 mt-10"
+                className="rounded-full gap-2 group bg-accent-mint text-slate-900 hover:bg-accent-mint/90 font-semibold mt-10"
                 onClick={() => navigate("/contact")}
               >
                 Explore Research Collaboration

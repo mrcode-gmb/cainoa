@@ -321,7 +321,7 @@ export default function Cybersecurity() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white border border-border text-center group hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl bg-card-bg border border-border text-center group hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <h3 className="font-heading text-xl font-bold text-primary mb-1">
                   {p.name}

@@ -103,7 +103,7 @@ export default function Leadership() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
+                  className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-md transition-all duration-500"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center mb-5">
                     <Icon size={28} className="text-primary" />
@@ -186,7 +186,7 @@ export default function Leadership() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500"
+                  className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-md transition-all duration-500"
                 >
                   <Icon size={28} className="text-primary mb-5" />
                   <h3 className="font-heading text-lg font-bold text-primary mb-2">{p.title}</h3>

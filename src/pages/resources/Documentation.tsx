@@ -331,7 +331,7 @@ export default function Documentation() {
                 key={item.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <item.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{item.title}</h3>
@@ -379,7 +379,7 @@ export default function Documentation() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search API references, SDKs, tutorials..."
                 aria-label="Search documentation"
-                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-white text-primary placeholder:text-muted-text focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                className="w-full h-14 pl-14 pr-5 rounded-full border border-border bg-card-bg text-primary placeholder:text-muted-text focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
               />
             </div>
           </motion.div>
@@ -399,7 +399,7 @@ export default function Documentation() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: i * 0.03 }}
-                  className="p-5 rounded-2xl border border-border bg-white hover:shadow-md transition-all duration-300"
+                  className="p-5 rounded-2xl border border-border bg-card-bg hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex items-start gap-3">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-bg text-primary text-xs font-semibold shrink-0 mt-0.5">
@@ -437,7 +437,7 @@ export default function Documentation() {
               <motion.div
                 key={api.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white p-8 transition-all duration-500"
+                className="rounded-3xl border border-border bg-card-bg p-8 transition-all duration-500"
               >
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">{api.title}</h3>
                 <p className="text-muted-text text-sm leading-relaxed mb-6">{api.desc}</p>
@@ -492,7 +492,7 @@ export default function Documentation() {
                 key={sdk.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500"
               >
                 <sdk.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{sdk.title}</h3>
@@ -525,7 +525,7 @@ export default function Documentation() {
               <motion.div
                 key={auth.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white p-8 transition-all duration-500"
+                className="rounded-3xl border border-border bg-card-bg p-8 transition-all duration-500"
               >
                 <Lock size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{auth.title}</h3>
@@ -556,7 +556,7 @@ export default function Documentation() {
               <motion.div
                 key={example.title}
                 {...fadeUp(i * 0.1)}
-                className="rounded-3xl border border-border bg-white overflow-hidden transition-all duration-500"
+                className="rounded-3xl border border-border bg-card-bg overflow-hidden transition-all duration-500"
               >
                 <div className="flex items-center justify-between px-6 pt-6 pb-3">
                   <div className="flex items-center gap-3">
@@ -568,7 +568,7 @@ export default function Documentation() {
                   </span>
                 </div>
                 <div className="px-6 pb-6">
-                  <pre className="rounded-2xl bg-primary p-4 overflow-x-auto text-xs leading-relaxed">
+                  <pre className="rounded-2xl bg-slate-900 dark:bg-slate-950 border border-slate-800 p-4 overflow-x-auto text-xs leading-relaxed">
                     <code className="text-white/90 font-mono">{example.code}</code>
                   </pre>
                 </div>
@@ -591,7 +591,7 @@ export default function Documentation() {
                 key={tutorial.title}
                 {...fadeUp(i * 0.1)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:shadow-md transition-all duration-500 flex flex-col"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:shadow-md transition-all duration-500 flex flex-col"
               >
                 <PlayCircle size={32} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{tutorial.title}</h3>
@@ -625,7 +625,7 @@ export default function Documentation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-2xl border border-border bg-white overflow-hidden"
+                className="rounded-2xl border border-border bg-card-bg overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}

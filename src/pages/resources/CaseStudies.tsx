@@ -169,12 +169,12 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="rounded-3xl bg-gradient-to-br from-primary via-primary/95 to-primary overflow-hidden border border-border"
+        className="rounded-3xl bg-slate-900 dark:bg-slate-950 overflow-hidden border border-slate-800 text-white"
       >
         <div className="grid lg:grid-cols-5">
           <div className="lg:col-span-3 p-8 lg:p-12 xl:p-16">
             <div className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-wider uppercase">
                 <TrendingUp size={14} />
                 Featured Case Study
               </span>
@@ -184,11 +184,11 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-secondary-bg flex items-center justify-center">
-                <Icon size={28} className="text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                <Icon size={28} className="text-white" />
               </div>
               <div>
-                <p className="text-sm text-muted-text font-semibold">{study.industry}</p>
+                <p className="text-sm text-emerald-400 font-semibold">{study.industry}</p>
                 <h3 className="font-heading text-2xl lg:text-3xl font-bold text-white">{study.client}</h3>
               </div>
             </div>
@@ -216,8 +216,8 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
             </div>
 
             <div className="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10 relative">
-              <Quote size={24} className="text-muted-text/20 absolute top-4 left-4" />
-              <blockquote className="pl-8 text-white/80 italic leading-relaxed">
+              <Quote size={24} className="text-white/20 absolute top-4 left-4" />
+              <blockquote className="pl-8 text-white/90 italic leading-relaxed">
                 &ldquo;{study.testimonial.text}&rdquo;
               </blockquote>
               <div className="mt-4 pl-8">
@@ -227,13 +227,10 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
             </div>
           </div>
 
-          <div className="lg:col-span-2 relative hidden lg:block">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary-bg to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-            </div>
+          <div className="lg:col-span-2 relative hidden lg:block border-l border-slate-800 bg-slate-950/50">
             <div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
-              <div className="w-24 h-24 rounded-3xl bg-secondary-bg flex items-center justify-center mb-6">
-                <Icon size={48} className="text-primary" />
+              <div className="w-24 h-24 rounded-3xl bg-white/10 flex items-center justify-center mb-6 border border-white/10">
+                <Icon size={48} className="text-white" />
               </div>
               <h4 className="font-heading text-2xl font-bold text-white mb-2">{study.client}</h4>
               <p className="text-white/60">{study.industry}</p>
@@ -250,7 +247,7 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="rounded-3xl bg-white border border-border overflow-hidden group hover:shadow-md transition-all duration-500"
+      className="rounded-3xl bg-card-bg border border-border overflow-hidden group hover:shadow-md transition-all duration-500"
     >
       <div className="p-8 lg:p-10">
         <div className="flex items-center gap-3 mb-6">
@@ -265,17 +262,17 @@ function CaseStudyCard({ study, index }: { study: CaseStudy; index: number }) {
 
         <div className="space-y-4 text-muted-text leading-relaxed text-sm">
           <div>
-            <h4 className="font-heading text-xs font-bold text-primary/60 uppercase tracking-wider mb-1">Challenge</h4>
+            <h4 className="font-heading text-xs font-bold text-primary/80 uppercase tracking-wider mb-1">Challenge</h4>
             <p>{study.challenge}</p>
           </div>
           <div>
-            <h4 className="font-heading text-xs font-bold text-primary/60 uppercase tracking-wider mb-1">Solution</h4>
+            <h4 className="font-heading text-xs font-bold text-primary/80 uppercase tracking-wider mb-1">Solution</h4>
             <p>{study.solution}</p>
           </div>
         </div>
 
-        <div className="mt-6 p-5 rounded-2xl bg-primary/5 border border-primary/10 relative">
-          <Quote size={18} className="text-muted-text/20 absolute top-3 left-3" />
+        <div className="mt-6 p-5 rounded-2xl bg-secondary-bg/60 border border-border relative">
+          <Quote size={18} className="text-muted-text/30 absolute top-3 left-3" />
           <blockquote className="pl-6 text-muted-text text-sm italic leading-relaxed">
             &ldquo;{study.testimonial.text}&rdquo;
           </blockquote>

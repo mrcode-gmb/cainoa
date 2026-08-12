@@ -192,7 +192,7 @@ export default function Press() {
               <p className="text-sm">Loading announcements from database...</p>
             </div>
           ) : announcements.length === 0 ? (
-            <div className="mt-12 py-20 text-center rounded-3xl bg-white border border-border px-6">
+            <div className="mt-12 py-20 text-center rounded-3xl bg-card-bg border border-border px-6">
               <Newspaper size={48} className="mx-auto text-muted-text/30" />
               <h3 className="mt-4 font-heading text-lg font-bold text-primary">
                 No Press Releases Published Yet
@@ -209,7 +209,7 @@ export default function Press() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="group mt-12 grid lg:grid-cols-2 rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500"
+                  className="group mt-12 grid lg:grid-cols-2 rounded-3xl border border-border bg-card-bg overflow-hidden hover:shadow-md transition-all duration-500"
                 >
                   <AnnouncementVisual icon={featured.icon} imageUrl={featured.imageUrl} />
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
@@ -267,7 +267,7 @@ export default function Press() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                       whileHover={{ y: -6 }}
-                      className="group rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
+                      className="group rounded-3xl border border-border bg-card-bg overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
                     >
                       <AnnouncementVisual icon={item.icon} imageUrl={item.imageUrl} />
                       <div className="p-6 flex flex-col flex-1">

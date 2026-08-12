@@ -139,9 +139,9 @@ export default function Contact() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="p-8 lg:p-10 rounded-3xl bg-white border border-border shadow-sm">
+                <form onSubmit={handleSubmit} className="p-8 lg:p-10 rounded-3xl bg-card-bg border border-border shadow-sm">
                   {error && (
-                    <div className="mb-5 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                    <div className="mb-5 p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm">
                       {error}
                     </div>
                   )}
@@ -155,7 +155,7 @@ export default function Contact() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Your full name"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -166,7 +166,7 @@ export default function Contact() {
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         placeholder="Company or institution name"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -178,7 +178,7 @@ export default function Contact() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@organization.com"
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
                       />
                     </div>
                     <div>
@@ -187,14 +187,14 @@ export default function Contact() {
                         id="service"
                         value={service}
                         onChange={(e) => setService(e.target.value)}
-                        className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                        className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300"
                       >
-                        <option value="">Select a service</option>
-                        <option value="AI & LLM Integration">AI & LLM Integration</option>
-                        <option value="Cybersecurity">Cybersecurity Assessment & Zero Trust</option>
-                        <option value="Cloud & Infrastructure">Cloud & Sovereign Infrastructure</option>
-                        <option value="Fintech Platforms">Fintech Platforms & Banking</option>
-                        <option value="Other Enterprise Request">Other Enterprise Request</option>
+                        <option value="" className="bg-card-bg text-primary">Select a service</option>
+                        <option value="AI & LLM Integration" className="bg-card-bg text-primary">AI & LLM Integration</option>
+                        <option value="Cybersecurity" className="bg-card-bg text-primary">Cybersecurity Assessment & Zero Trust</option>
+                        <option value="Cloud & Infrastructure" className="bg-card-bg text-primary">Cloud & Sovereign Infrastructure</option>
+                        <option value="Fintech Platforms" className="bg-card-bg text-primary">Fintech Platforms & Banking</option>
+                        <option value="Other Enterprise Request" className="bg-card-bg text-primary">Other Enterprise Request</option>
                       </select>
                     </div>
                     <div>
@@ -206,7 +206,7 @@ export default function Contact() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Tell us about your project, timeline, or requirements..."
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300 resize-y"
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all duration-300 resize-y"
                       />
                     </div>
                     <Button type="submit" size="lg" className="w-full rounded-full gap-2 group" disabled={loading}>

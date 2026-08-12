@@ -11,7 +11,7 @@ import {
 } from "../../lib/news"
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+  "w-full px-4 py-3 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
 
 const labelClass = "block text-sm font-semibold text-primary mb-1.5"
 
@@ -102,7 +102,7 @@ export default function NewsEditor() {
 
   return (
     <main className="min-h-screen bg-secondary-bg/50">
-      <header className="bg-white border-b border-border">
+      <header className="bg-card-bg border-b border-border">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="font-heading text-xl font-bold text-primary">
             Cainoa <span className="text-muted-text font-medium text-sm">/ Admin</span>
@@ -142,7 +142,7 @@ export default function NewsEditor() {
                   className={`px-4 py-3 rounded-2xl border text-left transition-all duration-300 ${
                     form.channel === channel
                       ? "border-primary bg-primary/5 text-primary"
-                      : "border-border bg-white text-muted-text hover:text-primary"
+                      : "border-border bg-card-bg text-muted-text hover:text-primary"
                   }`}
                 >
                   <span className="font-heading font-bold capitalize">{channel}</span>

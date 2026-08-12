@@ -68,12 +68,12 @@ export default function About() {
       <section className="py-16 lg:py-24 bg-secondary-bg/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="p-10 rounded-3xl bg-white border border-border">
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="p-10 rounded-3xl bg-card-bg border border-border">
               <Target size={36} className="text-primary mb-6" />
               <h3 className="font-heading text-2xl font-bold text-primary mb-4">Our Mission</h3>
               <p className="text-muted-text leading-relaxed">To deploy AI infrastructure and enterprise technology that powers Africa's digital transformation, enabling governments, businesses, and institutions to operate at global standards.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="p-10 rounded-3xl bg-white border border-border">
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="p-10 rounded-3xl bg-card-bg border border-border">
               <Eye size={36} className="text-primary mb-6" />
               <h3 className="font-heading text-2xl font-bold text-primary mb-4">Our Vision</h3>
               <p className="text-muted-text leading-relaxed">A digitally sovereign Africa where enterprise infrastructure is built by African engineers, powered by African innovation, and trusted by the world.</p>
@@ -87,7 +87,7 @@ export default function About() {
           <SectionHeading title="Core Values" subtitle="The principles that guide every system we build and every partnership we form." align="center" />
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
-              <motion.div key={v.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} whileHover={{ y: -4 }} className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-md transition-all duration-500">
+              <motion.div key={v.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} whileHover={{ y: -4 }} className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-md transition-all duration-500">
                 <v.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{v.title}</h3>
                 <p className="text-sm text-muted-text leading-relaxed">{v.desc}</p>
@@ -102,7 +102,7 @@ export default function About() {
           <SectionHeading title="Industries We Serve" subtitle="Delivering enterprise infrastructure across Africa's most critical sectors." />
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {industries.map((ind, i) => (
-              <motion.div key={ind.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="p-8 rounded-3xl bg-white border border-border text-center group hover:border-border transition-all duration-500">
+              <motion.div key={ind.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="p-8 rounded-3xl bg-card-bg border border-border text-center group hover:border-border transition-all duration-500">
                 <ind.icon size={36} className="text-primary mx-auto mb-4" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{ind.name}</h3>
                 <p className="text-sm text-muted-text">{ind.desc}</p>

@@ -174,7 +174,7 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
@@ -201,7 +201,7 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
@@ -228,7 +228,7 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <f.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{f.title}</h3>
@@ -409,7 +409,7 @@ export default function AIPlatform() {
                 viewport={{ once: true }}
                 transition={stagger(i)}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <b.icon size={28} className="text-primary mb-5" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">{b.title}</h3>
@@ -420,10 +420,7 @@ export default function AIPlatform() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-28 bg-primary">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary-bg to-transparent" />
-        </div>
+      <section className="relative py-20 lg:py-28 bg-slate-900 dark:bg-slate-950 border-t border-slate-800 text-white">
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -434,9 +431,9 @@ export default function AIPlatform() {
           >
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Ready to Build Your{" "}
-              <span className="text-accent-mint">AI Future</span>?
+              <span className="text-accent-mint dark:text-emerald-400">AI Future</span>?
             </h2>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
+            <p className="mt-6 text-lg text-white/70 leading-relaxed">
               Partner with Cainoa to architect, deploy, and scale enterprise AI systems that
               transform your operations.
             </p>
@@ -448,7 +445,7 @@ export default function AIPlatform() {
             >
               <Button
                 size="lg"
-                className="rounded-full gap-2 group bg-accent-mint text-primary hover:bg-accent-mint/90 mt-10"
+                className="rounded-full gap-2 group bg-accent-mint text-slate-900 hover:bg-accent-mint/90 font-semibold mt-10"
                 onClick={() => navigate("/contact")}
               >
                 Request a Demo

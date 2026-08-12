@@ -34,8 +34,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
+          : "bg-background/40 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -109,7 +109,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-border bg-white/95 backdrop-blur-xl overflow-hidden"
+            className="lg:hidden border-t border-border bg-card-bg/95 backdrop-blur-xl overflow-hidden"
           >
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link, i) => (

@@ -24,7 +24,7 @@ export default function PageHero({ title, subtitle, badge, highlight }: PageHero
   }
 
   return (
-    <section className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gradient-to-b from-secondary-bg/50 to-white">
+    <section className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gradient-to-b from-secondary-bg/50 to-background">
       <div className="absolute inset-0 pointer-events-none">
       </div>
 

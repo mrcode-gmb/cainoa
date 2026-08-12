@@ -185,16 +185,16 @@ export default function Infrastructure() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-10 lg:p-14 rounded-3xl bg-gradient-to-br from-primary via-primary/95 to-primary/90 text-white"
+            className="p-10 lg:p-14 rounded-3xl bg-slate-900 dark:bg-slate-950 border border-slate-800 text-white"
           >
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <span className="inline-block px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase mb-4">
+                <span className="inline-block px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-wider uppercase mb-4">
                   Our Approach
                 </span>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
                   Enterprise Infrastructure,{" "}
-                  <span className="text-accent-mint">Reimagined</span>
+                  <span className="text-accent-mint dark:text-emerald-400">Reimagined</span>
                 </h2>
                 <p className="mt-4 text-white/70 leading-relaxed">
                   Cainoa delivers production-grade infrastructure that
@@ -215,7 +215,7 @@ export default function Infrastructure() {
         <section
           key={service.title}
           className={`py-16 lg:py-24 ${
-            index % 2 === 0 ? "bg-secondary-bg/50" : "bg-white"
+            index % 2 === 0 ? "bg-secondary-bg/50" : "bg-card-bg"
           }`}
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -279,7 +279,7 @@ export default function Infrastructure() {
         </section>
       ))}
 
-      <section className="py-16 lg:py-24 bg-primary">
+      <section className="py-16 lg:py-24 bg-slate-900 dark:bg-slate-950 border-t border-slate-800 text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -291,6 +291,7 @@ export default function Infrastructure() {
               title="Why Choose Cainoa Infrastructure"
               subtitle="We don't just deploy infrastructure — we engineer long-term operational excellence."
               align="center"
+              dark={true}
             />
           </motion.div>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -327,12 +328,12 @@ export default function Infrastructure() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-3xl border border-white/10 bg-white/5 text-left hover:bg-white/10 transition-all duration-500"
+                className="p-8 rounded-3xl border border-white/10 dark:border-slate-800 bg-white/10 dark:bg-slate-900/80 text-left hover:bg-white/15 dark:hover:bg-slate-800/80 transition-all duration-500"
               >
                 <h3 className="font-heading text-lg font-bold text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>

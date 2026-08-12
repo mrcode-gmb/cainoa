@@ -2,6 +2,7 @@ import SEO from "../components/SEO"
 import HeroSection from "../components/HeroSection"
 import BlueprintSection from "../components/BlueprintSection"
 import PartnersSection from "../components/PartnersSection"
+import LatestNewsSection from "../components/LatestNewsSection"
 
 export default function Home() {
   return (
@@ -34,7 +35,7 @@ export default function Home() {
       <HeroSection />
       <BlueprintSection />
       <PartnersSection />
-      
+      <LatestNewsSection />
     </main>
   )
 }

@@ -41,7 +41,7 @@ export default function AdminMigrate() {
 
   return (
     <main className="min-h-screen bg-secondary-bg/50">
-      <header className="bg-white border-b border-border">
+      <header className="bg-card-bg border-b border-border">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="font-heading text-xl font-bold text-primary">
             Cainoa <span className="text-muted-text font-medium text-sm">/ Admin Setup</span>
@@ -66,7 +66,7 @@ export default function AdminMigrate() {
           </div>
         </div>
 
-        <div className="mt-8 rounded-3xl border border-border bg-white overflow-hidden">
+        <div className="mt-8 rounded-3xl border border-border bg-card-bg overflow-hidden">
           <div className="px-6 pt-6 pb-4 border-b border-border flex items-center justify-between">
             <div>
               <h2 className="font-heading text-lg font-bold text-primary">Step 1 — Open the SQL Editor</h2>
@@ -85,7 +85,7 @@ export default function AdminMigrate() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-3xl border border-border bg-white overflow-hidden">
+        <div className="mt-4 rounded-3xl border border-border bg-card-bg overflow-hidden">
           <div className="px-6 pt-6 pb-4 border-b border-border flex items-center justify-between">
             <div>
               <h2 className="font-heading text-lg font-bold text-primary">Step 2 — Copy &amp; Run this SQL</h2>
@@ -105,7 +105,7 @@ export default function AdminMigrate() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-3xl border border-border bg-white overflow-hidden">
+        <div className="mt-4 rounded-3xl border border-border bg-card-bg overflow-hidden">
           <div className="px-6 pt-6 pb-4 border-b border-border">
             <h2 className="font-heading text-lg font-bold text-primary">Step 3 — Return here &amp; reload</h2>
             <p className="text-sm text-muted-text mt-0.5">After running the SQL in Supabase, click the button below to go to the dashboard.</p>

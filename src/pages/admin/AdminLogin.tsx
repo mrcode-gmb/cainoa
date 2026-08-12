@@ -34,7 +34,7 @@ export default function AdminLogin() {
   if (!isSupabaseReady()) {
     return (
       <main className="min-h-screen bg-secondary-bg/50 flex items-center justify-center px-6">
-        <div className="w-full max-w-md p-8 lg:p-10 rounded-3xl bg-white border border-border">
+        <div className="w-full max-w-md p-8 lg:p-10 rounded-3xl bg-card-bg border border-border">
           <div className="flex items-center gap-2 text-amber-600">
             <AlertCircle size={20} />
             <h2 className="font-heading text-xl font-bold">Supabase not configured</h2>
@@ -58,7 +58,7 @@ export default function AdminLogin() {
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-text hover:text-primary transition-colors mb-6">
           <ArrowLeft size={16} /> Back to site
         </Link>
-        <div className="p-8 lg:p-10 rounded-3xl bg-white border border-border">
+        <div className="p-8 lg:p-10 rounded-3xl bg-card-bg border border-border">
           <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center mb-6">
             <Lock size={22} className="text-primary" />
           </div>
@@ -85,7 +85,7 @@ export default function AdminLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@cainoa.com"
-                className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
               />
             </div>
             <div>
@@ -99,7 +99,7 @@ export default function AdminLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
+                className="w-full h-12 px-4 rounded-xl border border-border bg-card-bg text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
               />
             </div>
             <Button type="submit" size="lg" className="w-full rounded-full" disabled={loading}>

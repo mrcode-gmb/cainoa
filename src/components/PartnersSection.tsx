@@ -70,25 +70,25 @@ export default function PartnersSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className="group relative flex flex-col items-center justify-center p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+              className="group relative flex flex-col items-center justify-center p-6 rounded-3xl border border-border bg-card-bg hover:border-primary/40 hover:shadow-xl transition-all duration-500"
             >
               {hasLogo(partner) ? (
-                <div className="w-full h-24 flex items-center justify-center mb-4 px-4">
+                <div className="w-full h-24 flex items-center justify-center mb-4 px-4 bg-white/50 dark:bg-slate-800/60 rounded-2xl border border-border/40">
                   <img
                     src={partner.logo}
                     alt={partner.name}
                     loading="lazy"
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain dark:brightness-125"
                   />
                 </div>
               ) : (
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary-bg border border-border/50 flex items-center justify-center mb-4 group-hover:from-secondary-bg group-hover:to-secondary-bg group-hover:border-border transition-all duration-500">
-                  <span className="font-heading text-xl font-bold text-primary group-hover:text-primary transition-colors duration-500">
+                <div className="w-16 h-16 rounded-2xl bg-secondary-bg border border-border flex items-center justify-center mb-4 transition-all duration-500">
+                  <span className="font-heading text-xl font-bold text-primary">
                     {partner.initials}
                   </span>
                 </div>
               )}
-              <h3 className="font-heading text-sm font-semibold text-primary text-center group-hover:text-primary transition-colors duration-500">
+              <h3 className="font-heading text-sm font-semibold text-primary text-center">
                 {partner.name}
               </h3>
               <p className="text-xs text-muted-text mt-1 text-center">

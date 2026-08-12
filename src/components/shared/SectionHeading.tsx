@@ -6,6 +6,7 @@ interface SectionHeadingProps {
   badge?: string
   align?: "left" | "center"
   highlight?: string
+  dark?: boolean
 }
 
 export default function SectionHeading({
@@ -14,6 +15,7 @@ export default function SectionHeading({
   badge,
   align = "left",
   highlight,
+  dark = false,
 }: SectionHeadingProps) {
   const renderTitle = () => {
     if (!highlight || !title.includes(highlight)) {
@@ -24,7 +26,7 @@ export default function SectionHeading({
     return (
       <>
         {before}
-        <span className="text-accent-mint">{highlight}</span>
+        <span className="text-accent-mint dark:text-emerald-400">{highlight}</span>
         {after}
       </>
     )
@@ -39,15 +41,23 @@ export default function SectionHeading({
       className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
     >
       {badge && (
-          <span className="inline-block px-3 py-1.5 rounded-full bg-secondary-bg border border-border text-primary text-xs font-semibold tracking-wider uppercase mb-3">
+        <span className={`inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-3 ${
+          dark
+            ? "bg-white/10 border border-white/20 text-white"
+            : "bg-secondary-bg border border-border text-primary"
+        }`}>
           {badge}
         </span>
       )}
-      <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+      <h2 className={`font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight ${
+        dark ? "text-white" : "text-primary"
+      }`}>
         {renderTitle()}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-lg text-muted-text leading-relaxed">
+        <p className={`mt-3 text-lg leading-relaxed ${
+          dark ? "text-white/70" : "text-muted-text"
+        }`}>
           {subtitle}
         </p>
       )}

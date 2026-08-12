@@ -46,8 +46,8 @@ function AnimatedBackground() {
       })
     }
 
-    const drawGrid = () => {
-      ctx.strokeStyle = "rgba(1, 69, 39, 0.08)"
+    const drawGrid = (isDark: boolean) => {
+      ctx.strokeStyle = isDark ? "rgba(16, 185, 129, 0.07)" : "rgba(1, 69, 39, 0.08)"
       ctx.lineWidth = 1
       const spacing = 60
       for (let x = 0; x < canvas.width; x += spacing) {
@@ -64,7 +64,7 @@ function AnimatedBackground() {
       }
     }
 
-    const drawGradients = () => {
+    const drawGradients = (isDark: boolean) => {
       const grd1 = ctx.createRadialGradient(
         canvas.width * 0.3,
         canvas.height * 0.4,
@@ -73,8 +73,8 @@ function AnimatedBackground() {
         canvas.height * 0.4,
         400
       )
-      grd1.addColorStop(0, "rgba(1, 69, 39, 0.08)")
-      grd1.addColorStop(1, "rgba(1, 69, 39, 0)")
+      grd1.addColorStop(0, isDark ? "rgba(16, 185, 129, 0.12)" : "rgba(1, 69, 39, 0.08)")
+      grd1.addColorStop(1, "rgba(0, 0, 0, 0)")
       ctx.fillStyle = grd1
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -86,16 +86,17 @@ function AnimatedBackground() {
         canvas.height * 0.6,
         300
       )
-      grd2.addColorStop(0, "rgba(15, 23, 42, 0.05)")
-      grd2.addColorStop(1, "rgba(15, 23, 42, 0)")
+      grd2.addColorStop(0, isDark ? "rgba(30, 41, 59, 0.3)" : "rgba(15, 23, 42, 0.05)")
+      grd2.addColorStop(1, "rgba(0, 0, 0, 0)")
       ctx.fillStyle = grd2
       ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
 
     const animate = () => {
+      const isDark = document.documentElement.classList.contains("dark")
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      drawGrid()
-      drawGradients()
+      drawGrid(isDark)
+      drawGradients(isDark)
 
       particles.forEach((p) => {
         p.x += p.vx
@@ -108,7 +109,7 @@ function AnimatedBackground() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(1, 69, 39, ${p.alpha})`
+        ctx.fillStyle = isDark ? `rgba(52, 211, 153, ${p.alpha})` : `rgba(1, 69, 39, ${p.alpha})`
         ctx.fill()
       })
 
@@ -134,7 +135,7 @@ function AnimatedBackground() {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-white via-secondary-bg/30 to-white">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       <AnimatedBackground />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24 pt-36 lg:pt-40">
@@ -144,14 +145,14 @@ export default function HeroSection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-4xl"
         >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-bg border border-border text-primary text-sm font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-bg border border-border text-primary text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             Enterprise AI Infrastructure
           </div>
 
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight text-primary">
             Powering the{" "}
-            <span className="text-accent-mint">AI Transformation</span>
+            <span className="text-accent-mint dark:text-emerald-400">AI Transformation</span>
             <br />
             of a Modern Economy
           </h1>
@@ -174,7 +175,7 @@ export default function HeroSection() {
             <input
               type="email"
               placeholder="Enter your organization email"
-              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-white text-primary placeholder:text-muted-text/70 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300 text-base"
+              className="w-full h-14 pl-5 pr-4 rounded-2xl border-2 border-border bg-card-bg text-primary placeholder:text-muted-text/70 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all duration-300 text-base"
               aria-label="Organization email"
             />
           </div>
@@ -191,24 +192,25 @@ export default function HeroSection() {
           className="mt-12 flex items-center gap-4 sm:gap-6 text-sm text-muted-text"
         >
           <div className="flex -space-x-2 sm:-space-x-3">
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={aqtrisLogo} alt="Aqtris" loading="eager" className="h-5 sm:h-6 w-auto" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-border bg-card-bg shadow-sm overflow-hidden flex items-center justify-center p-1">
+              <img src={aqtrisLogo} alt="Aqtris" loading="eager" className="h-5 sm:h-6 w-auto dark:invert" />
             </div>
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={gsuLogo} alt="GSU Alumni" loading="eager" className="h-6 sm:h-7 w-auto" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-border bg-card-bg shadow-sm overflow-hidden flex items-center justify-center p-1">
+              <img src={gsuLogo} alt="GSU Alumni" loading="eager" className="h-6 sm:h-7 w-auto dark:invert" />
             </div>
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={benevolenceLogo} alt="Benevolence" loading="eager" className="h-5 sm:h-6 w-auto object-contain" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-border bg-card-bg shadow-sm overflow-hidden flex items-center justify-center p-1">
+              <img src={benevolenceLogo} alt="Benevolence" loading="eager" className="h-5 sm:h-6 w-auto object-contain dark:invert" />
             </div>
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-white bg-white shadow-sm overflow-hidden flex items-center justify-center">
-              <img src={fmbnLogo} alt="FMBN Equishare" loading="eager" className="h-5 sm:h-6 w-auto object-contain" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-border bg-card-bg shadow-sm overflow-hidden flex items-center justify-center p-1">
+              <img src={fmbnLogo} alt="FMBN Equishare" loading="eager" className="h-5 sm:h-6 w-auto object-contain dark:invert" />
             </div>
           </div>
           <span className="font-medium">Trusted by leading organizations across Africa</span>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   )
 }
+

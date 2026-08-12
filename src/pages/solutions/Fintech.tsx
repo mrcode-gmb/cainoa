@@ -93,7 +93,7 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 whileHover={{ y: -4 }}
-                className="p-8 lg:p-10 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-8 lg:p-10 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <div className="grid lg:grid-cols-5 gap-8 items-start">
                   <div className="lg:col-span-2">
@@ -140,7 +140,7 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <ShieldCheck size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">PCI DSS Level 1</h3>
@@ -152,7 +152,7 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <Globe size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">ISO 27001</h3>
@@ -164,7 +164,7 @@ export default function Fintech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-3xl border border-border bg-white hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
+                className="p-6 rounded-3xl border border-border bg-card-bg hover:border-border hover:shadow-xl hover:shadow-md transition-all duration-500"
               >
                 <Users size={32} className="text-primary mb-4 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-primary mb-2">NDPR Compliant</h3>

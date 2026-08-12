@@ -7,7 +7,7 @@ export default function CTASection() {
   const navigate = useNavigate()
 
   return (
-    <section className="relative py-20 lg:py-28 bg-gray-50">
+    <section className="relative py-20 lg:py-28 bg-secondary-bg/50 border-t border-border">
     
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <motion.div
@@ -17,18 +17,18 @@ export default function CTASection() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">
             Let&apos;s Build the{" "}
-            <span className="text-accent-mint">Future Together</span>
+            <span className="text-accent-mint dark:text-emerald-400">Future Together</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-4 text-lg text-muted-text leading-relaxed">
             Partner with Cainoa to deliver secure, scalable, and intelligent
             digital infrastructure.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="rounded-full gap-2 group bg-accent hover:bg-accent/90"
+              className="rounded-full gap-2 group bg-accent hover:bg-accent/90 text-white font-semibold"
               onClick={() => navigate("/contact")}
             >
               Partner With Us
@@ -40,7 +40,7 @@ export default function CTASection() {
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full gap-2 group border-gray-900/20 text-gray-600 hover:bg-gray-900/10 hover:text-gray-900"
+              className="rounded-full gap-2 group border-border text-primary hover:bg-secondary-bg"
               onClick={() => navigate("/contact")}
             >
               Contact Our Team

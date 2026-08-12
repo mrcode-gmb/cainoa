@@ -146,7 +146,7 @@ export default function Blog() {
                   className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap border ${
                     activeCategory === cat
                       ? "bg-primary text-white border-primary shadow-lg shadow-primary/25"
-                      : "bg-white text-muted-text border-border hover:border-primary/30 hover:text-primary"
+                      : "bg-card-bg text-muted-text border-border hover:border-primary/30 hover:text-primary"
                   }`}
                 >
                   {cat}
@@ -161,7 +161,7 @@ export default function Blog() {
               <p className="text-sm">Loading articles from database...</p>
             </div>
           ) : articleList.length === 0 ? (
-            <div className="mt-12 py-20 text-center rounded-3xl bg-white border border-border px-6">
+            <div className="mt-12 py-20 text-center rounded-3xl bg-card-bg border border-border px-6">
               <BookOpen size={48} className="mx-auto text-muted-text/30" />
               <h3 className="mt-4 font-heading text-lg font-bold text-primary">
                 No Articles Published Yet
@@ -178,7 +178,7 @@ export default function Blog() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="mt-10 group rounded-3xl bg-white border border-border overflow-hidden hover:shadow-md transition-all duration-500"
+                  className="mt-10 group rounded-3xl bg-card-bg border border-border overflow-hidden hover:shadow-md transition-all duration-500"
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
                     <ArticleImage icon={BookOpen} imageUrl={featured.imageUrl} className="aspect-[4/3] lg:aspect-auto" />
@@ -236,7 +236,7 @@ export default function Blog() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                       whileHover={{ y: -6 }}
-                      className="group rounded-3xl bg-white border border-border overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
+                      className="group rounded-3xl bg-card-bg border border-border overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
                     >
                       <ArticleImage icon={BookOpen} imageUrl={article.imageUrl} />
                       <div className="p-6 flex flex-col flex-1">
@@ -328,7 +328,7 @@ export default function Blog() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="flex-1 h-14 px-6 rounded-2xl border border-border bg-white text-primary placeholder:text-muted-text/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all duration-300"
+                  className="flex-1 h-14 px-6 rounded-2xl border border-border bg-card-bg text-primary placeholder:text-muted-text/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all duration-300"
                 />
                 <Button
                   size="lg"
