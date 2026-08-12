@@ -3,16 +3,57 @@ import { useState } from "react"
 import SEO from "../components/SEO"
 import PageHero from "../components/shared/PageHero"
 import { Button } from "../components/ui/button"
-import { Send, Mail, MapPin } from "lucide-react"
+import { Send, Mail, MapPin, Loader2, CheckCircle2 } from "lucide-react"
+import { submitContactMessage } from "../lib/contact"
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
+  const [name, setName] = useState("")
+  const [organization, setOrganization] = useState("")
+  const [email, setEmail] = useState("")
+  const [service, setService] = useState("")
+  const [message, setMessage] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Wire this form to a real backend endpoint (email/CRM/webhook).
-    // For now it shows a success state as a UI placeholder.
-    setSubmitted(true)
+    setError("")
+    setLoading(true)
+
+    try {
+      const res = await submitContactMessage({
+        name,
+        organization,
+        email,
+        service,
+        message,
+      })
+
+      if (res.success) {
+        setSubmitted(true)
+        // Also trigger mailto notification to contact@cainoa.com
+        const mailtoUrl = `mailto:contact@cainoa.com?subject=${encodeURIComponent(
+          `New Contact Inquiry from ${name} (${organization || "Individual"})`
+        )}&body=${encodeURIComponent(
+          `Name: ${name}\nOrganization: ${organization}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
+        )}`
+        
+        // Open background mailto link if requested
+        const a = document.createElement("a")
+        a.href = mailtoUrl
+        a.target = "_blank"
+        a.click()
+      } else {
+        setError(res.error || "Unable to send message. Please try again.")
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to send message."
+      setError(msg)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -42,26 +83,25 @@ export default function Contact() {
 
               <div className="mt-10 space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0 border border-border">
                     <Mail size={22} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-primary">Email</h3>
+                    <h3 className="font-heading font-bold text-primary">Email Direct</h3>
                     <p className="text-sm text-muted-text mt-1">
-                      <a href="mailto:partner@cainoa.com" className="text-primary hover:underline">partner@cainoa.com</a>
+                      <a href="mailto:contact@cainoa.com" className="text-accent font-semibold hover:underline">contact@cainoa.com</a>
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-secondary-bg flex items-center justify-center shrink-0 border border-border">
                     <MapPin size={22} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-primary">Office</h3>
-                    <p className="text-sm text-muted-text mt-1">
-                      Cainoa Technologies Ltd.<br />
-                      Plot 1072, Cadastral Zone B07<br />
-                      Abuja, Nigeria
+                    <h3 className="font-heading font-bold text-primary">Headquarters Office</h3>
+                    <p className="text-sm text-muted-text mt-1 leading-relaxed">
+                      Port Harcourt Crescent, Off Gimbiya Street, <br />
+                      Area11, Garki, Abuja, Nigeria.
                     </p>
                   </div>
                 </div>
@@ -76,43 +116,67 @@ export default function Contact() {
             >
               {submitted ? (
                 <div className="p-10 rounded-3xl bg-secondary-bg border border-border text-center">
-                  <div className="w-16 h-16 rounded-full bg-secondary-bg flex items-center justify-center mx-auto mb-6">
-                    <Send size={28} className="text-primary" />
+                  <div className="w-16 h-16 rounded-full bg-accent-tint flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 size={32} className="text-accent" />
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-primary mb-3">Thank You</h3>
-                  <p className="text-muted-text leading-relaxed">
-                    Your message has been received. Our team will review it and get back to you within one business day.
+                  <h3 className="font-heading text-2xl font-bold text-primary mb-3">Message Delivered</h3>
+                  <p className="text-muted-text leading-relaxed max-w-md mx-auto">
+                    Thank you, <strong>{name}</strong>! Your message has been saved and dispatched to <strong>contact@cainoa.com</strong> and our admin dashboard. Our team will get back to you within one business day.
                   </p>
+                  <Button
+                    variant="outline"
+                    className="mt-6 rounded-full"
+                    onClick={() => {
+                      setSubmitted(false)
+                      setName("")
+                      setOrganization("")
+                      setEmail("")
+                      setService("")
+                      setMessage("")
+                    }}
+                  >
+                    Send Another Message
+                  </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="p-8 lg:p-10 rounded-3xl bg-white border border-border">
+                <form onSubmit={handleSubmit} className="p-8 lg:p-10 rounded-3xl bg-white border border-border shadow-sm">
+                  {error && (
+                    <div className="mb-5 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                      {error}
+                    </div>
+                  )}
                   <div className="space-y-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-primary mb-1.5">Full Name</label>
+                      <label htmlFor="name" className="block text-sm font-semibold text-primary mb-1.5">Full Name *</label>
                       <input
                         id="name"
                         type="text"
                         required
-                        placeholder="Your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Your full name"
                         className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="organization" className="block text-sm font-semibold text-primary mb-1.5">Organization</label>
+                      <label htmlFor="organization" className="block text-sm font-semibold text-primary mb-1.5">Organization / Company</label>
                       <input
                         id="organization"
                         type="text"
-                        required
+                        value={organization}
+                        onChange={(e) => setOrganization(e.target.value)}
                         placeholder="Company or institution name"
                         className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-primary mb-1.5">Email Address</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-primary mb-1.5">Email Address *</label>
                       <input
                         id="email"
                         type="email"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@organization.com"
                         className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       />
@@ -121,30 +185,41 @@ export default function Contact() {
                       <label htmlFor="service" className="block text-sm font-semibold text-primary mb-1.5">Service Interest</label>
                       <select
                         id="service"
-                        required
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
                         className="w-full h-12 px-4 rounded-xl border border-border bg-white text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300"
                       >
                         <option value="">Select a service</option>
-                        <option value="ai">AI & LLM Integration</option>
-                        <option value="cybersecurity">Cybersecurity</option>
-                        <option value="infrastructure">Cloud & Infrastructure</option>
-                        <option value="fintech">Fintech Platforms</option>
-                        <option value="other">Other</option>
+                        <option value="AI & LLM Integration">AI & LLM Integration</option>
+                        <option value="Cybersecurity">Cybersecurity Assessment & Zero Trust</option>
+                        <option value="Cloud & Infrastructure">Cloud & Sovereign Infrastructure</option>
+                        <option value="Fintech Platforms">Fintech Platforms & Banking</option>
+                        <option value="Other Enterprise Request">Other Enterprise Request</option>
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-primary mb-1.5">Message</label>
+                      <label htmlFor="message" className="block text-sm font-semibold text-primary mb-1.5">Message *</label>
                       <textarea
                         id="message"
                         required
                         rows={4}
-                        placeholder="Tell us about your project or inquiry..."
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Tell us about your project, timeline, or requirements..."
                         className="w-full px-4 py-3 rounded-xl border border-border bg-white text-primary placeholder:text-muted-text/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-300 resize-y"
                       />
                     </div>
-                    <Button type="submit" size="lg" className="w-full rounded-full gap-2 group">
-                      <Send size={16} className="transition-transform group-hover:translate-x-0.5" />
-                      Send Message
+                    <Button type="submit" size="lg" className="w-full rounded-full gap-2 group" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" /> Sending Message…
+                        </>
+                      ) : (
+                        <>
+                          <Send size={16} className="transition-transform group-hover:translate-x-0.5" />
+                          Send Message &amp; Notify Admin
+                        </>
+                      )}
                     </Button>
                   </div>
                 </form>

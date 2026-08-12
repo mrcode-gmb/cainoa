@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary:       #0F172A;
-  --color-accent: #014527;
-  --color-accent-light: #0B6B3A;
-  --color-accent-mint: #8ECE9C;
-  --color-accent-tint: #E6F0EA;
-  --color-background: #FFFFFF;
-  --color-secondary-bg: #F7F7F7;
-  --color-text: #111827;
-  --color-muted-text: #6B7280;
-  --color-border: #E5E7EB;
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-mint: var(--color-accent-mint);
+  --color-accent-tint: var(--color-accent-tint);
+  --color-background: var(--color-background);
+  --color-secondary-bg: var(--color-secondary-bg);
+  --color-text: var(--color-text);
+  --color-muted-text: var(--color-muted-text);
+  --color-border: var(--color-border);
+  --color-card-bg: var(--color-card-bg);
 
   --font-heading: "Space Grotesk", "Inter", "SF Pro Display", "Helvetica Neue", "Arial", sans-serif;
   --font-body: "Inter", "Space Grotesk", "SF Pro Text", "Helvetica Neue", "Arial", sans-serif;
@@ -34,6 +35,36 @@
   --leading-relaxed: 1.65;
 }
 
+:root {
+  --color-primary: #0F172A;
+  --color-accent: #014527;
+  --color-accent-light: #0B6B3A;
+  --color-accent-mint: #8ECE9C;
+  --color-accent-tint: #E6F0EA;
+  --color-background: #FFFFFF;
+  --color-secondary-bg: #F7F8FA;
+  --color-text: #0F172A;
+  --color-muted-text: #64748B;
+  --color-border: #E2E8F0;
+  --color-card-bg: #FFFFFF;
+  color-scheme: light;
+}
+
+.dark {
+  --color-primary: #F8FAFC;
+  --color-accent: #10B981;
+  --color-accent-light: #34D399;
+  --color-accent-mint: #8ECE9C;
+  --color-accent-tint: #064E3B;
+  --color-background: #0B0F19;
+  --color-secondary-bg: #111827;
+  --color-text: #F8FAFC;
+  --color-muted-text: #94A3B8;
+  --color-border: #1E293B;
+  --color-card-bg: #1E293B;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -46,9 +77,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background-color: #0B6B3A;
   color: #FFFFFF;
+}
+
+.dark ::selection {
+  background-color: #10B981;
+  color: #090D16;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-text);
 }

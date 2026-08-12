@@ -6,6 +6,7 @@ import CTASection from "../../components/shared/CTASection"
 import { Button } from "../../components/ui/button"
 import { Clock, User, ArrowRight, Calendar, BookOpen, Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { listNews } from "../../lib/news"
 
 const categories = [
@@ -21,6 +22,7 @@ const categories = [
 ]
 
 interface Article {
+  id?: string
   category: string
   title: string
   excerpt: string
@@ -89,6 +91,7 @@ export default function Blog() {
         if (!active) return
         setArticleList(
           (items ?? []).map((item) => ({
+            id: item.id,
             category: item.category,
             title: item.title,
             excerpt: item.excerpt,
@@ -200,12 +203,23 @@ export default function Blog() {
                         </span>
                       </div>
                       <div className="mt-6">
-                        <Button
-                          variant="ghost"
-                          className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-primary"
-                        >
-                          Read Article <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
-                        </Button>
+                        {featured.id ? (
+                          <Link to={`/resources/blog/${featured.id}`}>
+                            <Button
+                              variant="ghost"
+                              className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-primary font-semibold"
+                            >
+                              Read Full Article <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Button
+                            variant="ghost"
+                            className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-primary font-semibold"
+                          >
+                            Read Article <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -227,25 +241,43 @@ export default function Blog() {
                       <ArticleImage icon={BookOpen} imageUrl={article.imageUrl} />
                       <div className="p-6 flex flex-col flex-1">
                         <CategoryBadge label={article.category} />
-                        <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug group-hover:text-primary transition-colors">
-                          {article.title}
-                        </h3>
+                        {article.id ? (
+                          <Link to={`/resources/blog/${article.id}`}>
+                            <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug hover:text-accent transition-colors">
+                              {article.title}
+                            </h3>
+                          </Link>
+                        ) : (
+                          <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug">
+                            {article.title}
+                          </h3>
+                        )}
                         <p className="mt-2 text-sm text-muted-text leading-relaxed flex-1">{article.excerpt}</p>
-                        <div className="mt-5 pt-5 border-t border-border flex items-center gap-3">
-                          <AuthorAvatar name={article.author} />
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-primary truncate">{article.author}</p>
-                            <div className="flex items-center gap-3 text-xs text-muted-text mt-0.5">
-                              <span className="flex items-center gap-1">
-                                <Calendar size={12} />
-                                {article.date}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock size={12} />
-                                {article.readTime}
-                              </span>
+                        <div className="mt-5 pt-5 border-t border-border flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <AuthorAvatar name={article.author} />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-medium text-primary truncate">{article.author}</p>
+                              <div className="flex items-center gap-3 text-xs text-muted-text mt-0.5">
+                                <span className="flex items-center gap-1">
+                                  <Calendar size={12} />
+                                  {article.date}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <Clock size={12} />
+                                  {article.readTime}
+                                </span>
+                              </div>
                             </div>
                           </div>
+                          {article.id && (
+                            <Link
+                              to={`/resources/blog/${article.id}`}
+                              className="text-xs font-semibold text-accent hover:underline shrink-0"
+                            >
+                              Read →
+                            </Link>
+                          )}
                         </div>
                       </div>
                     </motion.article>

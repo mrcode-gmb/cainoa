@@ -20,13 +20,17 @@ import Terms from "./pages/legal/Terms"
 import Security from "./pages/legal/Security"
 import Compliance from "./pages/legal/Compliance"
 import { AuthProvider, ProtectedRoute } from "./lib/auth"
+import { ThemeProvider } from "./lib/theme"
 import AdminLogin from "./pages/admin/AdminLogin"
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import NewsEditor from "./pages/admin/NewsEditor"
 import AdminMigrate from "./pages/admin/AdminMigrate"
 
+import NewsDetail from "./pages/NewsDetail"
+
 export default function App() {
   return (
+    <ThemeProvider>
     <HelmetProvider>
     <AuthProvider>
     <BrowserRouter>
@@ -37,6 +41,7 @@ export default function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/press" element={<Press />} />
+          <Route path="/press/:id" element={<NewsDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/solutions/ai-platform" element={<AIPlatform />} />
           <Route path="/solutions/fintech" element={<Fintech />} />
@@ -45,6 +50,7 @@ export default function App() {
           <Route path="/resources/documentation" element={<Documentation />} />
           <Route path="/resources/research" element={<Research />} />
           <Route path="/resources/blog" element={<Blog />} />
+          <Route path="/resources/blog/:id" element={<NewsDetail />} />
           <Route path="/resources/case-studies" element={<CaseStudies />} />
           <Route path="/legal/privacy" element={<Privacy />} />
           <Route path="/legal/terms" element={<Terms />} />
@@ -81,5 +87,6 @@ export default function App() {
     </BrowserRouter>
     </AuthProvider>
     </HelmetProvider>
+    </ThemeProvider>
   )
 }

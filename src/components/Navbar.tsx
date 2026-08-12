@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 import { Button } from "./ui/button"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useTheme } from "../lib/theme"
 import logo from "../assets/cainoa logo.png"
 
 const navLinks = [
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+  const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
     setMobileOpen(false)
@@ -30,10 +32,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-border shadow-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-border shadow-sm"
           : "bg-transparent"
-        }`}
+      }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -54,10 +57,11 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 to={link.href}
-                className={`relative text-sm font-medium transition-colors duration-200 group ${location.pathname === link.href
+                className={`relative text-sm font-medium transition-colors duration-200 group ${
+                  location.pathname === link.href
                     ? "text-primary font-semibold"
                     : "text-muted-text hover:text-primary"
-                  }`}
+                }`}
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -65,19 +69,36 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full border border-border bg-secondary-bg text-primary hover:border-primary/40 transition-colors"
+              aria-label="Toggle theme"
+              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+            </button>
             <Button size="default" className="rounded-full" onClick={() => navigate("/contact")}>
               Partner With Us
             </Button>
           </div>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-primary"
-            aria-label="Toggle navigation menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-border bg-secondary-bg text-primary"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-700" />}
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-primary"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 

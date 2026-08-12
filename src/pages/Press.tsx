@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import SEO from "../components/SEO"
 import PageHero from "../components/shared/PageHero"
 import SectionHeading from "../components/shared/SectionHeading"
@@ -30,6 +30,7 @@ import {
 const categories = ["All", "Company", "Product", "Engineering", "Security"]
 
 type Announcement = {
+  id?: string
   category: string
   title: string
   date: string
@@ -55,6 +56,7 @@ const categoryIcons: Record<string, React.ElementType> = {
 
 function newsToAnnouncement(item: NewsItem): Announcement {
   return {
+    id: item.id,
     category: item.category,
     title: item.title,
     date: item.date,
@@ -225,16 +227,31 @@ export default function Press() {
                       {featured.excerpt}
                     </p>
                     <div className="mt-6">
-                      <Button
-                        variant="ghost"
-                        className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
-                      >
-                        Read Announcement
-                        <ArrowRight
-                          size={16}
-                          className="transition-transform group-hover/btn:translate-x-1"
-                        />
-                      </Button>
+                      {featured.id ? (
+                        <Link to={`/press/${featured.id}`}>
+                          <Button
+                            variant="ghost"
+                            className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent font-semibold"
+                          >
+                            Read Full Announcement
+                            <ArrowRight
+                              size={16}
+                              className="transition-transform group-hover/btn:translate-x-1"
+                            />
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button
+                          variant="ghost"
+                          className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent font-semibold"
+                        >
+                          Read Announcement
+                          <ArrowRight
+                            size={16}
+                            className="transition-transform group-hover/btn:translate-x-1"
+                          />
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </motion.article>
@@ -268,16 +285,31 @@ export default function Press() {
                           {item.excerpt}
                         </p>
                         <div className="mt-5 pt-5 border-t border-border">
-                          <Button
-                            variant="ghost"
-                            className="gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
-                          >
-                            Learn more
-                            <ArrowRight
-                              size={16}
-                              className="transition-transform group-hover/btn:translate-x-1"
-                            />
-                          </Button>
+                          {item.id ? (
+                            <Link to={`/press/${item.id}`}>
+                              <Button
+                                variant="ghost"
+                                className="gap-2 group/btn px-0 hover:bg-transparent hover:text-accent font-semibold"
+                              >
+                                Read Full Announcement
+                                <ArrowRight
+                                  size={16}
+                                  className="transition-transform group-hover/btn:translate-x-1"
+                                />
+                              </Button>
+                            </Link>
+                          ) : (
+                            <Button
+                              variant="ghost"
+                              className="gap-2 group/btn px-0 hover:bg-transparent hover:text-accent font-semibold"
+                            >
+                              Learn more
+                              <ArrowRight
+                                size={16}
+                                className="transition-transform group-hover/btn:translate-x-1"
+                              />
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </motion.article>
