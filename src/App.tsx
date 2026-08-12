@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
-import ScrollToTop from "./components/ScrollToTop"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
+import PublicLayout from "./components/PublicLayout"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Careers from "./pages/Careers"
@@ -21,35 +19,67 @@ import Privacy from "./pages/legal/Privacy"
 import Terms from "./pages/legal/Terms"
 import Security from "./pages/legal/Security"
 import Compliance from "./pages/legal/Compliance"
+import { AuthProvider, ProtectedRoute } from "./lib/auth"
+import AdminLogin from "./pages/admin/AdminLogin"
+import AdminDashboard from "./pages/admin/AdminDashboard"
+import NewsEditor from "./pages/admin/NewsEditor"
+import AdminMigrate from "./pages/admin/AdminMigrate"
 
 export default function App() {
   return (
     <HelmetProvider>
+    <AuthProvider>
     <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/leadership" element={<Leadership />} />
-        <Route path="/press" element={<Press />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/solutions/ai-platform" element={<AIPlatform />} />
-        <Route path="/solutions/fintech" element={<Fintech />} />
-        <Route path="/solutions/cybersecurity" element={<Cybersecurity />} />
-        <Route path="/solutions/infrastructure" element={<Infrastructure />} />
-        <Route path="/resources/documentation" element={<Documentation />} />
-        <Route path="/resources/research" element={<Research />} />
-        <Route path="/resources/blog" element={<Blog />} />
-        <Route path="/resources/case-studies" element={<CaseStudies />} />
-        <Route path="/legal/privacy" element={<Privacy />} />
-        <Route path="/legal/terms" element={<Terms />} />
-        <Route path="/legal/security" element={<Security />} />
-        <Route path="/legal/compliance" element={<Compliance />} />
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/leadership" element={<Leadership />} />
+          <Route path="/press" element={<Press />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/solutions/ai-platform" element={<AIPlatform />} />
+          <Route path="/solutions/fintech" element={<Fintech />} />
+          <Route path="/solutions/cybersecurity" element={<Cybersecurity />} />
+          <Route path="/solutions/infrastructure" element={<Infrastructure />} />
+          <Route path="/resources/documentation" element={<Documentation />} />
+          <Route path="/resources/research" element={<Research />} />
+          <Route path="/resources/blog" element={<Blog />} />
+          <Route path="/resources/case-studies" element={<CaseStudies />} />
+          <Route path="/legal/privacy" element={<Privacy />} />
+          <Route path="/legal/terms" element={<Terms />} />
+          <Route path="/legal/security" element={<Security />} />
+          <Route path="/legal/compliance" element={<Compliance />} />
+        </Route>
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/setup" element={<ProtectedRoute><AdminMigrate /></ProtectedRoute>} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/news/new"
+          element={
+            <ProtectedRoute>
+              <NewsEditor />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/news/edit/:id"
+          element={
+            <ProtectedRoute>
+              <NewsEditor />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      <Footer />
     </BrowserRouter>
+    </AuthProvider>
     </HelmetProvider>
   )
 }

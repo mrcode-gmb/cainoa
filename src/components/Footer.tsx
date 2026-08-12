@@ -19,6 +19,7 @@ const footerLinks = {
   Resources: [
     { label: "Documentation", to: "/resources/documentation" },
     { label: "Research", to: "/resources/research" },
+    { label: "News", to: "/press" },
     { label: "Blog", to: "/resources/blog" },
     { label: "Case Studies", to: "/resources/case-studies" },
   ],

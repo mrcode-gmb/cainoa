@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import SEO from "../components/SEO"
@@ -6,6 +6,7 @@ import PageHero from "../components/shared/PageHero"
 import SectionHeading from "../components/shared/SectionHeading"
 import CTASection from "../components/shared/CTASection"
 import { Button } from "../components/ui/button"
+import { listNews, type NewsItem } from "../lib/news"
 import {
   ArrowRight,
   Download,
@@ -20,60 +21,48 @@ import {
   FolderDown,
   Users,
   Image as ImageIcon,
+  Newspaper,
+  Loader2,
 } from "lucide-react"
 
 // TODO: Replace placeholder announcements with real, verifiable company updates
 // (with client permission). Remove any item whose facts cannot be confirmed.
 const categories = ["All", "Company", "Product", "Engineering", "Security"]
 
-const announcements = [
-  {
-    category: "Engineering",
-    title: "AI Leadership",
-    date: "2025",
-    excerpt:
-      "Launched LLM integration services, AI agent frameworks, and expanded our engineering team.",
-    icon: Brain,
-  },
-  {
-    category: "Company",
-    title: "Regional Growth",
-    date: "2024",
-    excerpt:
-      "Expanded operations to serve government, financial, and educational clients across multiple states.",
-    icon: MapPin,
-  },
-  {
-    category: "Security",
-    title: "Cybersecurity Practice Established",
-    date: "2023",
-    excerpt:
-      "Formalized security operations, zero-trust architecture, and penetration testing services.",
-    icon: ShieldCheck,
-  },
-  {
-    category: "Product",
-    title: "Fintech Platform Launch",
-    date: "2022",
-    excerpt: "Launched secure payment and cooperative banking infrastructure.",
-    icon: Landmark,
-  },
-  {
-    category: "Product",
-    title: "First Enterprise Deployments",
-    date: "2021",
-    excerpt: "Deployed first enterprise AI systems for financial institutions.",
-    icon: Rocket,
-  },
-  {
-    category: "Company",
-    title: "Founded",
-    date: "2020",
-    excerpt:
-      "Cainoa was established with a mission to build enterprise-grade AI infrastructure for African organizations.",
-    icon: Building2,
-  },
-]
+type Announcement = {
+  category: string
+  title: string
+  date: string
+  excerpt: string
+  icon: React.ElementType
+  imageUrl?: string
+}
+
+const categoryIcons: Record<string, React.ElementType> = {
+  Company: Building2,
+  Product: Rocket,
+  Engineering: Brain,
+  Security: ShieldCheck,
+  "Artificial Intelligence": Brain,
+  Fintech: Landmark,
+  Cybersecurity: ShieldCheck,
+  "Enterprise Software": Building2,
+  Cloud: MapPin,
+  "Product Engineering": Rocket,
+  "Company News": Newspaper,
+  "Case Studies": FileText,
+}
+
+function newsToAnnouncement(item: NewsItem): Announcement {
+  return {
+    category: item.category,
+    title: item.title,
+    date: item.date,
+    excerpt: item.excerpt,
+    icon: categoryIcons[item.category] ?? Newspaper,
+    imageUrl: item.imageUrl,
+  }
+}
 
 function CategoryBadge({ label }: { label: string }) {
   return (
@@ -83,7 +72,21 @@ function CategoryBadge({ label }: { label: string }) {
   )
 }
 
-function AnnouncementVisual({ icon: Icon }: { icon: React.ElementType }) {
+function AnnouncementVisual({ icon: Icon, imageUrl }: { icon: React.ElementType; imageUrl?: string }) {
+  if (imageUrl) {
+    return (
+      <div className="aspect-[16/10] overflow-hidden bg-secondary-bg border-b border-border">
+        <img
+          src={imageUrl}
+          alt=""
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => {
+            (e.target as HTMLElement).style.display = "none"
+          }}
+        />
+      </div>
+    )
+  }
   return (
     <div className="aspect-[16/10] overflow-hidden bg-gradient-to-br from-secondary-bg via-secondary-bg to-secondary-bg border-b border-border flex items-center justify-center">
       <Icon
@@ -104,23 +107,40 @@ const pressKitAssets = [
 export default function Press() {
   const [activeCategory, setActiveCategory] = useState("All")
   const [visibleCount, setVisibleCount] = useState(3)
+  const [announcements, setAnnouncements] = useState<Announcement[]>([])
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
-  const displayed = useMemo(() => {
-    const filtered =
-      activeCategory === "All"
-        ? announcements
-        : announcements.filter((a) => a.category === activeCategory)
-    return filtered.slice(0, visibleCount)
-  }, [activeCategory, visibleCount])
+  useEffect(() => {
+    let active = true
+    listNews("press", true)
+      .then((items) => {
+        if (!active) return
+        setAnnouncements((items ?? []).map(newsToAnnouncement))
+        setActiveCategory("All")
+      })
+      .catch(() => {
+        if (active) setAnnouncements([])
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
-  const hasMore = (() => {
-    const filtered =
-      activeCategory === "All"
-        ? announcements
-        : announcements.filter((a) => a.category === activeCategory)
-    return visibleCount < filtered.length
-  })()
+  const filtered = useMemo(() => {
+    return activeCategory === "All"
+      ? announcements
+      : announcements.filter((a) => a.category === activeCategory)
+  }, [activeCategory, announcements])
+
+  // Featured article is the first announcement when "All" is active
+  const featured = activeCategory === "All" && announcements.length > 0 ? announcements[0] : null
+  const gridItems = activeCategory === "All" && announcements.length > 0 ? filtered.slice(1) : filtered
+  const displayed = gridItems.slice(0, visibleCount)
+  const hasMore = visibleCount < gridItems.length
 
   return (
     <main>
@@ -164,108 +184,129 @@ export default function Press() {
             </div>
           </div>
 
-          {activeCategory === "All" && (
-            <motion.article
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="group mt-12 grid lg:grid-cols-2 rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500"
-            >
-              <AnnouncementVisual icon={announcements[0].icon} />
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-3">
-                  <CategoryBadge label={announcements[0].category} />
-                  <span className="flex items-center gap-1.5 text-xs text-muted-text">
-                    <Calendar size={12} />
-                    {announcements[0].date}
-                  </span>
+          {loading ? (
+            <div className="py-24 flex flex-col items-center justify-center text-muted-text">
+              <Loader2 size={32} className="animate-spin text-primary mb-3" />
+              <p className="text-sm">Loading announcements from database...</p>
+            </div>
+          ) : announcements.length === 0 ? (
+            <div className="mt-12 py-20 text-center rounded-3xl bg-white border border-border px-6">
+              <Newspaper size={48} className="mx-auto text-muted-text/30" />
+              <h3 className="mt-4 font-heading text-lg font-bold text-primary">
+                No Press Releases Published Yet
+              </h3>
+              <p className="mt-1 text-sm text-muted-text max-w-md mx-auto">
+                Official press announcements will appear here automatically once created and published in the admin dashboard.
+              </p>
+            </div>
+          ) : (
+            <>
+              {featured && (
+                <motion.article
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="group mt-12 grid lg:grid-cols-2 rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500"
+                >
+                  <AnnouncementVisual icon={featured.icon} imageUrl={featured.imageUrl} />
+                  <div className="p-8 lg:p-12 flex flex-col justify-center">
+                    <div className="flex items-center gap-3">
+                      <CategoryBadge label={featured.category} />
+                      <span className="flex items-center gap-1.5 text-xs text-muted-text">
+                        <Calendar size={12} />
+                        {featured.date}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 font-heading text-2xl lg:text-3xl font-bold text-primary leading-tight">
+                      {featured.title}
+                    </h3>
+                    <p className="mt-4 text-muted-text leading-relaxed max-w-xl">
+                      {featured.excerpt}
+                    </p>
+                    <div className="mt-6">
+                      <Button
+                        variant="ghost"
+                        className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
+                      >
+                        Read Announcement
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform group-hover/btn:translate-x-1"
+                        />
+                      </Button>
+                    </div>
+                  </div>
+                </motion.article>
+              )}
+
+              {displayed.length > 0 && (
+                <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {displayed.map((item, i) => (
+                    <motion.article
+                      key={item.title + i}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.08 }}
+                      whileHover={{ y: -6 }}
+                      className="group rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
+                    >
+                      <AnnouncementVisual icon={item.icon} imageUrl={item.imageUrl} />
+                      <div className="p-6 flex flex-col flex-1">
+                        <div className="flex items-center gap-3">
+                          <CategoryBadge label={item.category} />
+                          <span className="flex items-center gap-1.5 text-xs text-muted-text">
+                            <Calendar size={12} />
+                            {item.date}
+                          </span>
+                        </div>
+                        <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-muted-text leading-relaxed flex-1">
+                          {item.excerpt}
+                        </p>
+                        <div className="mt-5 pt-5 border-t border-border">
+                          <Button
+                            variant="ghost"
+                            className="gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
+                          >
+                            Learn more
+                            <ArrowRight
+                              size={16}
+                              className="transition-transform group-hover/btn:translate-x-1"
+                            />
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.article>
+                  ))}
                 </div>
-                <h3 className="mt-4 font-heading text-2xl lg:text-3xl font-bold text-primary leading-tight">
-                  {announcements[0].title}
-                </h3>
-                <p className="mt-4 text-muted-text leading-relaxed max-w-xl">
-                  {announcements[0].excerpt}
-                </p>
-                <div className="mt-6">
+              )}
+
+              {hasMore && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="mt-10 text-center"
+                >
                   <Button
-                    variant="ghost"
-                    className="rounded-full gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full gap-2 group"
+                    onClick={() => setVisibleCount((prev) => prev + 3)}
                   >
-                    Read Announcement
+                    Load More Updates
                     <ArrowRight
-                      size={16}
-                      className="transition-transform group-hover/btn:translate-x-1"
+                      size={18}
+                      className="transition-transform group-hover:translate-x-1"
                     />
                   </Button>
-                </div>
-              </div>
-            </motion.article>
-          )}
-
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayed.map((item, i) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="group rounded-3xl border border-border bg-white overflow-hidden hover:shadow-md transition-all duration-500 flex flex-col"
-              >
-                <AnnouncementVisual icon={item.icon} />
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-3">
-                    <CategoryBadge label={item.category} />
-                    <span className="flex items-center gap-1.5 text-xs text-muted-text">
-                      <Calendar size={12} />
-                      {item.date}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-heading text-lg font-bold text-primary leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-text leading-relaxed flex-1">
-                    {item.excerpt}
-                  </p>
-                  <div className="mt-5 pt-5 border-t border-border">
-                    <Button
-                      variant="ghost"
-                      className="gap-2 group/btn px-0 hover:bg-transparent hover:text-accent"
-                    >
-                      Learn more
-                      <ArrowRight
-                        size={16}
-                        className="transition-transform group-hover/btn:translate-x-1"
-                      />
-                    </Button>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
-          {hasMore && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mt-10 text-center"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full gap-2 group"
-                onClick={() => setVisibleCount((prev) => prev + 3)}
-              >
-                Load More Updates
-                <ArrowRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Button>
-            </motion.div>
+                </motion.div>
+              )}
+            </>
           )}
         </div>
       </section>
